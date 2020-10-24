@@ -20,14 +20,7 @@ coverage
 build/Release
 
 # Dependency directories
-node_modules/
-jspm_packages/
-
-# TypeScript v1 declaration files
-typings/
-
-# TypeScript cache
-*.tsbuildinfo
+node_modules
 
 # Optional npm cache directory
 .npm
@@ -47,3 +40,5 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
+
+dist
