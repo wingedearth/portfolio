@@ -9,6 +9,11 @@
     "build": "./node_modules/.bin/babel src --out-dir dist",
     "start": "node ./dist/index.js"
   },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
@@ -16,7 +21,10 @@
     "@babel/plugin-proposal-throw-expressions": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
-    "babel-plugin-macros": "^2.8.0"
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "babel-plugin-macros": "^2.8.0",
+    "husky": "^4.3.0"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1"
