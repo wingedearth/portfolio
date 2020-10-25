@@ -7,7 +7,7 @@
   "author": "Andrew A. Anissi <andrew@wingedearth.com>",
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-dir dist",
-    "start": "node ./dist/index.js"
+    "start": "node ./dist/server/server.js"
   },
   "husky": {
     "hooks": {
@@ -40,6 +40,7 @@
     "prettier": "^2.1.2"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1"
+    "@babel/polyfill": "^7.12.1",
+    "express": "^4.17.1"
   }
 }
