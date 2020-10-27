@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Web Development Portfolio for Andrew A. Anissi",
   "main": "src/index.js",
   "repository": "git@github.com:wingedearth/portfolio.git",
@@ -44,6 +44,7 @@
     "webpack-cli": "^4.1.0"
   },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/polyfill": "^7.12.1",
     "babel-loader": "^8.1.0",
     "css-loader": "^5.0.0",
@@ -52,6 +53,11 @@
     "file-loader": "^6.1.1",
     "path": "^0.12.7",
     "postcss-loader": "^4.0.4",
-    "sass-loader": "^10.0.4"
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "sass-loader": "^10.0.4",
+    "serialize-javascript": "^5.0.1",
+    "style-loader": "^2.0.0"
   }
 }

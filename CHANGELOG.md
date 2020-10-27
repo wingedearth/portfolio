@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/wingedearth/portfolio/compare/v1.0.0...v1.1.0) (2020-10-27)
+
+
+### Features
+
+* add React ([675fa24](https://github.com/wingedearth/portfolio/commit/675fa249302edcc71b87eb19e63efe5c3602318d))
+* add standard-version ([6f5f031](https://github.com/wingedearth/portfolio/commit/6f5f031a1eba16729eb10b4dd41bbea813180245))
+
 ## 1.0.0 (2020-10-27)
 
 
