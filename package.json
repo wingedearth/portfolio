@@ -6,7 +6,7 @@
   "repository": "git@github.com:wingedearth/portfolio.git",
   "author": "Andrew A. Anissi <andrew@wingedearth.com>",
   "scripts": {
-    "build": "./node_modules/.bin/babel src --out-dir dist",
+    "build": "webpack --config ./webpack.server.config.js",
     "start": "node ./dist/server/server.js"
   },
   "husky": {
@@ -37,10 +37,19 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-standard": "^4.0.2",
     "husky": "^4.3.0",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "webpack": "^5.2.0",
+    "webpack-cli": "^4.1.0"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
-    "express": "^4.17.1"
+    "babel-loader": "^8.1.0",
+    "css-loader": "^5.0.0",
+    "express": "^4.17.1",
+    "external-svg-sprite-loader": "^6.0.1",
+    "file-loader": "^6.1.1",
+    "path": "^0.12.7",
+    "postcss-loader": "^4.0.4",
+    "sass-loader": "^10.0.4"
   }
 }
