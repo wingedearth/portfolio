@@ -23,7 +23,6 @@ module.exports = {
 	},
 	plugins: ['prettier', 'react'],
 	rules: {
-		'react/display-name': [2, { ignoreTranspilerName: true }],
 		'no-console': 0,
 		'prettier/prettier': [
 			'error',
