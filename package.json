@@ -7,6 +7,7 @@
   "author": "Andrew A. Anissi <andrew@wingedearth.com>",
   "scripts": {
     "build": "webpack --config ./webpack.server.config.js",
+    "release": "standard-version",
     "start": "node ./dist/server/server.js"
   },
   "husky": {
@@ -38,6 +39,7 @@
     "eslint-plugin-standard": "^4.0.2",
     "husky": "^4.3.0",
     "prettier": "^2.1.2",
+    "standard-version": "^9.0.0",
     "webpack": "^5.2.0",
     "webpack-cli": "^4.1.0"
   },
