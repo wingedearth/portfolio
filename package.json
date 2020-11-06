@@ -1,12 +1,14 @@
 {
   "name": "portfolio",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Web Development Portfolio for Andrew A. Anissi",
-  "main": "src/index.js",
   "repository": "git@github.com:wingedearth/portfolio.git",
   "author": "Andrew A. Anissi <andrew@wingedearth.com>",
   "scripts": {
-    "build": "webpack --config ./webpack.server.config.js",
+    "build": "NODE_ENV=production webpack --config webpack.client.config.js && NODE_ENV=production webpack --config webpack.config.js",
+    "build:watch": "webpack --config webpack.client.config.js && webpack --config webpack.config.js --watch",
+    "clean": "rimraf dist",
+    "release": "standard-version",
     "start": "node ./dist/server/server.js"
   },
   "husky": {
@@ -19,6 +21,7 @@
     "@babel/core": "^7.12.3",
     "@babel/plugin-proposal-optional-chaining": "^7.12.1",
     "@babel/plugin-proposal-throw-expressions": "^7.12.1",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
     "@commitlint/cli": "^11.0.0",
@@ -38,18 +41,29 @@
     "eslint-plugin-standard": "^4.0.2",
     "husky": "^4.3.0",
     "prettier": "^2.1.2",
+    "standard-version": "^9.0.0",
     "webpack": "^5.2.0",
     "webpack-cli": "^4.1.0"
   },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/polyfill": "^7.12.1",
     "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "core-js": "^3.6.5",
     "css-loader": "^5.0.0",
     "express": "^4.17.1",
     "external-svg-sprite-loader": "^6.0.1",
     "file-loader": "^6.1.1",
     "path": "^0.12.7",
     "postcss-loader": "^4.0.4",
-    "sass-loader": "^10.0.4"
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "rimraf": "^3.0.2",
+    "sass-loader": "^10.0.4",
+    "serialize-javascript": "^5.0.1",
+    "style-loader": "^2.0.0",
+    "webpack-assets-manifest": "^3.1.1"
   }
 }
