@@ -12,8 +12,6 @@ const jsRule = {
 	]
 };
 
-const getRules = () => {
+module.exports = () => {
 	return [jsRule];
 };
-
-module.exports = getRules;

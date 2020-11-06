@@ -12,6 +12,7 @@ const App = ({ data }) => {
 		<main>
 			<h1>{data?.title}</h1>
 			<h3>React is now rendering page data from the server.</h3>
+			<h3>{data?.test}</h3>
 		</main>
 	);
 };

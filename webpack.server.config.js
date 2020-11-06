@@ -1,5 +1,10 @@
 const path = require('path');
 const getRules = require('./webpack/rules');
+const getOptimization = require('./webpack/optimization');
+const getPlugins = require('./webpack/plugins');
+const baseConfig = require('./webpack.base.config');
+
+const isServer = true;
 
 module.exports = {
 	entry: {
@@ -19,8 +24,11 @@ module.exports = {
 	module: {
 		rules: getRules()
 	},
+	optimization: getOptimization(isServer),
+	plugins: getPlugins(isServer),
 	target: 'node',
 	watchOptions: {
 		ignored: /node_modules/
-	}
+	},
+	...baseConfig
 };

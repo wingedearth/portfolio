@@ -4,6 +4,9 @@ import router from './router';
 const port = process.env.PORT || 4000;
 const app = express();
 
+// Static paths
+app.use(express.static('dist/client'));
+
 app.use(router);
 
 app.on('error', (err) => {
