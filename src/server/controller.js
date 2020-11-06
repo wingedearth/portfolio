@@ -4,6 +4,7 @@ import template from '@/server/template';
 import App from '@/components/App';
 
 const title = 'Portfolio';
+const entryName = 'client';
 
 /**
  * @function Controller
@@ -22,7 +23,7 @@ const Controller = (req, res) => {
 
 	// render App
 	const markup = renderToString(<App data={data} />);
-	const page = template(data, markup);
+	const page = template(data, markup, entryName);
 
 	res.send(page);
 };

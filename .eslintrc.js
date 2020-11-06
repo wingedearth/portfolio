@@ -37,16 +37,15 @@ module.exports = {
 		'comma-dangle': [2, 'never'],
 		semi: [2, 'always'],
 		'no-tabs': 0,
-		'no-new': 1,
 		'valid-jsdoc': [
-			2,
+			1,
 			{
 				requireParamDescription: false,
 				requireReturnDescription: false,
-				requireReturn: false
+				requireReturn: false,
+				returns: true
 			}
-		],
-		'jsx-a11y/media-has-caption': 0
+		]
 	},
 	settings: {
 		react: {
