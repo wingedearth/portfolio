@@ -1,7 +1,14 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const clientPlugins = [];
+const clientPlugins = [
+	new MiniCssExtractPlugin({
+		filename: 'css/[name].css',
+		chunkFilename: 'css/[id].css',
+		ignoreOrder: true
+	}),
+];
 
 const serverPlugins = [
 	new CleanWebpackPlugin({
