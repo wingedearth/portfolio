@@ -12,8 +12,17 @@ export const getScriptTags = (files) => {
 			.map((file) => `<script type="text/javascript" src="/${file}"></script>`)
 			.join('\n');
 	}
-	console.log('entry files not found.');
+	console.log('js files not found.');
 };
+
+/**
+ * @function getStyleTags
+ * @description takes an array of filenames and creates a string including a link tag to import each css file referenced by name
+ * @param {Array} files - file names
+ * @returns {Array}
+ */
+export const getStyleTags = files =>
+	files.map(file => `<link rel="stylesheet" href="/${file}"></link>`).join('\n');
 
 /**
  * @function template
@@ -29,6 +38,7 @@ const template = (data, markup, entryName) => {
 	const manifest = require('../../dist/client/manifest.json');
 	const entry = manifest?.entrypoints?.[entryName];
 	const scriptTags = getScriptTags(entry?.js);
+	const styleTags = getStyleTags(entry?.css);
 
 	return `
 	<!DOCTYPE html>
@@ -37,6 +47,7 @@ const template = (data, markup, entryName) => {
 				<meta charset="UTF-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1">
 				<title>${title}</title>
+				${styleTags}
 			</head>
 			<body>
 				<div id="root">${markup}</div>

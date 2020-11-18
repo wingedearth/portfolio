@@ -9,7 +9,7 @@ module.exports = {
 		client: path.join(__dirname, 'src/client/app.js')
 	},
 	output: {
-		filename: '[name].js',
+		filename: 'js/[name].js',
 		path: path.resolve(__dirname, 'dist', 'client')
 	},
 	module: {
