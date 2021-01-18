@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WebpackAssetsManifest = require('webpack-assets-manifest');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -8,6 +9,9 @@ const clientPlugins = [
 		chunkFilename: 'css/[id].css',
 		ignoreOrder: true
 	}),
+	new webpack.DefinePlugin({
+		'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+	})
 ];
 
 const serverPlugins = [

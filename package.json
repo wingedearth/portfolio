@@ -5,11 +5,13 @@
   "repository": "git@github.com:wingedearth/portfolio.git",
   "author": "Andrew A. Anissi <andrew@wingedearth.com>",
   "scripts": {
-    "build": "NODE_ENV=production webpack --config webpack.client.config.js && NODE_ENV=production webpack --config webpack.config.js",
+    "build": "webpack --config webpack.client.config.js && webpack --config webpack.config.js",
+    "build:prod": "NODE_ENV=production webpack --config webpack.client.config.js && NODE_ENV=production webpack --config webpack.config.js",
     "build:watch": "webpack --config webpack.client.config.js && webpack --config webpack.config.js --watch",
     "clean": "rimraf dist",
+    "dev": "node ./dist/server/server.js",
     "release": "standard-version",
-    "start": "node ./dist/server/server.js"
+    "start": "NODE_ENV=production node ./dist/server/server.js"
   },
   "husky": {
     "hooks": {
