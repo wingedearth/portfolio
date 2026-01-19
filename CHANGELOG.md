@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/wingedearth/portfolio/compare/v0.1.4...v0.1.5) (2026-01-19)
+
+
+### Features
+
+* **data:** migrate portfolio to fetch from Sanity CMS ([08ca808](https://github.com/wingedearth/portfolio/commit/08ca808ec7575be50f53385ddedad823bd2e593e))
+
+
+### Bug Fixes
+
+* resolve Sanity image-url deprecation warning ([f240504](https://github.com/wingedearth/portfolio/commit/f240504c4b7c69f9d9cc5a0fc435f38ae5ceff8f))
+
 ### [0.1.4](https://github.com/wingedearth/portfolio/compare/v0.1.3...v0.1.4) (2026-01-19)
 
 
