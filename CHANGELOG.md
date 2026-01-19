@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/wingedearth/portfolio/compare/v0.1.3...v0.1.4) (2026-01-19)
+
+
+### Features
+
+* **pages:** add About page with Sanity CMS integration ([7bace02](https://github.com/wingedearth/portfolio/commit/7bace028ff5a192d21c91c66ae49ac8526d6020d))
+
 ### [0.1.3](https://github.com/wingedearth/portfolio/compare/v0.1.2...v0.1.3) (2026-01-19)
 
 
