@@ -11,6 +11,8 @@ A modern, responsive portfolio website built with Next.js, React, and TypeScript
 - 🎬 **Video Support**: Native video playback with custom thumbnails
 - 🔍 **SEO Friendly**: Optimized for search engines
 - 🎯 **TypeScript**: Fully typed for better development experience
+- 🗄️ **Sanity CMS**: Headless CMS for managing multiple portfolios
+- 🔄 **Multi-site Support**: Platform for creating multiple portfolio sites
 
 ## Getting Started
 
@@ -23,6 +25,12 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
+
+### Sanity Studio
+
+Access the content management system at [http://localhost:3000/studio](http://localhost:3000/studio)
+
+See [SANITY_SETUP.md](./SANITY_SETUP.md) for detailed CMS documentation.
 
 ### Build
 
@@ -156,6 +164,7 @@ Build the static site and deploy the `.next` folder to any hosting platform that
 - **Framework**: Next.js 16
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
+- **CMS**: Sanity.io
 - **Image Optimization**: Next.js Image Component
 - **Deployment**: Vercel (recommended)
 
