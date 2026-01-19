@@ -126,3 +126,17 @@ export const collectionByIdQuery = groq`
     }
   }
 `;
+
+export const aboutQuery = groq`
+  *[_type == "about"][0] {
+    _id,
+    heading,
+    bio,
+    "profileImage": profileImage.asset->url,
+    skills,
+    socialLinks[] {
+      platform,
+      url
+    }
+  }
+`;
