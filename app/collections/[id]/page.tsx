@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import { getCollectionById, collections } from '@/data/portfolio-data';
+import { client } from '@/lib/sanity';
+import { collectionByIdQuery, collectionsQuery } from '@/lib/queries';
 import ProjectCard from '@/components/ProjectCard';
 import { Header } from '@/components/Header';
 
@@ -11,14 +11,15 @@ interface CollectionPageProps {
 }
 
 export async function generateStaticParams() {
-  return collections.map((collection) => ({
+  const collections = await client.fetch(collectionsQuery);
+  return collections.map((collection: any) => ({
     id: collection.id,
   }));
 }
 
 export default async function CollectionPage({ params }: CollectionPageProps) {
   const { id } = await params;
-  const collection = getCollectionById(id);
+  const collection = await client.fetch(collectionByIdQuery, { id });
 
   if (!collection) {
     notFound();
@@ -41,7 +42,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
         {/* Projects Grid */}
         {collection.projects.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {collection.projects.map((project) => (
+            {collection.projects.map((project: any) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>

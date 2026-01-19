@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import { getProjectBySlug, projects } from '@/data/portfolio-data';
+import { client } from '@/lib/sanity';
+import { projectBySlugQuery, projectsQuery } from '@/lib/queries';
 import MediaGallery from '@/components/MediaGallery';
 import { Header } from '@/components/Header';
 
@@ -11,14 +11,15 @@ interface ProjectPageProps {
 }
 
 export async function generateStaticParams() {
-  return projects.map((project) => ({
+  const projects = await client.fetch(projectsQuery);
+  return projects.map((project: any) => ({
     slug: project.slug,
   }));
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const project = getProjectBySlug(slug);
+  const project = await client.fetch(projectBySlugQuery, { slug });
 
   if (!project) {
     notFound();
@@ -40,7 +41,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <p className="text-xl text-gray-600 mb-4">{project.description}</p>
           {project.tags.length > 0 && (
             <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
+              {project.tags.map((tag: string) => (
                 <span
                   key={tag}
                   className="px-3 py-1 text-sm bg-[var(--accent)]/10 text-[var(--accent)] rounded-full"
