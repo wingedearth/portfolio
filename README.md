@@ -92,6 +92,20 @@ Edit `data/portfolio-data.ts` to add your own projects:
 
 ## Media Guidelines
 
+### Recommended Media Hosting
+
+**Images** - [Cloudinary](https://cloudinary.com) (Recommended)
+- Free tier: 25 GB storage with generous bandwidth
+- Automatic image optimization and transformations
+- Fast CDN delivery worldwide
+- On-the-fly resizing and format conversion
+
+**Videos** - [Vimeo](https://vimeo.com) (Recommended)
+- Professional video hosting with clean player
+- Privacy controls and custom player options
+- Reliable streaming with adaptive quality
+- Free tier available for basic hosting
+
 ### Images
 - Supported formats: JPEG, PNG, WebP, SVG
 - Recommended size: 1920x1080 or larger

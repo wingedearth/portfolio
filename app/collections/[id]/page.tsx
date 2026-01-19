@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getCollectionById, collections } from '@/data/portfolio-data';
 import ProjectCard from '@/components/ProjectCard';
+import { Header } from '@/components/Header';
 
 interface CollectionPageProps {
   params: Promise<{
@@ -25,14 +26,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <Link href="/" className="text-blue-600 hover:text-blue-800 mb-4 inline-block">
-            ← Back to Home
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Collection Header */}

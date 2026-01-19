@@ -32,7 +32,6 @@ export default function CollectionCard({ collection }: CollectionCardProps) {
         <h3 className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
           {collection.name}
         </h3>
-        <p className="text-gray-600 mb-3">{collection.description}</p>
         <div className="text-sm text-gray-500">
           {collection.projects.length} {collection.projects.length === 1 ? 'project' : 'projects'}
         </div>

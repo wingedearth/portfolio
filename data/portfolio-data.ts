@@ -1,8 +1,8 @@
 import { Project, ProjectCollection } from '@/types/portfolio';
 
 export const portfolioInfo = {
-  title: 'My Portfolio',
-  subtitle: 'Showcasing creative projects and design work',
+  title: 'Jennifer Tran-Anissi',
+  subtitle: 'Motion Graphics Designer',
 };
 
 export const projects: Project[] = [
@@ -89,9 +89,33 @@ export const projects: Project[] = [
     tags: ['Product Design', 'UX/UI', 'Mobile'],
     year: 2024,
   },
+  {
+    id: '5',
+    title: 'Ignite On Tour',
+    slug: 'ignite-on-tour',
+    description: 'This is Ignite',
+    longDescription: 'This is a long description of Ignite',
+    media: [
+      {
+        type: 'image',
+        url: 'https://res.cloudinary.com/dqnzmmuy5/image/upload/v1768806196/Screenshot_2026-01-13_at_7.01.51_PM_pmozel.png',
+        alt: 'Ignite On Tour Banner'
+      }
+    ],
+    tags: ['PaloAlto']
+  }
 ];
 
 export const collections: ProjectCollection[] = [
+  {
+    description: 'For Palo Alto Networks, the global cybersecurity leader and in collaboration with their editors and the video team I created a comprehensive, branded motion graphics toolkit including animated logo lockups, lower thirds, MOGRT templates, and outros. Built around their brand geometry, the system features dynamic animations of abstract data flows, threat barriers, and AI-driven protection. Clean transitions, bold orange accents, and fluid kinetic typography deliver high-impact visuals for product explainers, social media, and brand storytelling—emphasizing security, innovation, and precision in an evolving digital threat landscape.',
+    id: 'paloalto',
+    name: "Palo Alto Networks: Branded Live Events & Toolkits",
+    projects: projects.filter((p) =>
+      p.tags.some(tag => ['PaloAlto'].includes(tag))
+    ),
+    thumbnail: 'https://res.cloudinary.com/dqnzmmuy5/image/upload/v1768806196/Screenshot_2026-01-13_at_7.01.51_PM_pmozel.png'
+  },
   {
     id: 'design',
     name: 'Design Work',

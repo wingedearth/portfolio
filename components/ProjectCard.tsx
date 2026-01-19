@@ -34,19 +34,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <span className="text-sm text-gray-500 flex-shrink-0">{project.year}</span>
           )}
         </div>
-        <p className="text-gray-600 mb-3 line-clamp-2">{project.description}</p>
-        {project.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded-full"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
+        <p className="text-gray-600 line-clamp-2">{project.description}</p>
       </div>
     </Link>
   );
