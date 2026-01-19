@@ -43,7 +43,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 text-sm bg-blue-100 text-blue-800 rounded-full"
+                  className="px-3 py-1 text-sm bg-[var(--accent)]/10 text-[var(--accent)] rounded-full"
                 >
                   {tag}
                 </span>

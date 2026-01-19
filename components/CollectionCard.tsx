@@ -29,7 +29,7 @@ export default function CollectionCard({ collection }: CollectionCardProps) {
         </div>
       )}
       <div className="p-5">
-        <h3 className="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
+        <h3 className="text-2xl font-bold text-gray-900 group-hover:text-[var(--accent)] transition-colors mb-2">
           {collection.name}
         </h3>
         <div className="text-sm text-gray-500">

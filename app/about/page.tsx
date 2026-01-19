@@ -44,8 +44,18 @@ export default async function AboutPage() {
                 <h1 className="text-4xl font-bold text-gray-900 mb-6">{about.heading}</h1>
               )}
               {about.bio && (
-                <div className="prose prose-lg max-w-none text-gray-700">
-                  <PortableText value={about.bio} />
+                <div className="text-gray-700 space-y-4">
+                  <PortableText 
+                    value={about.bio}
+                    components={{
+                      block: {
+                        normal: ({children}) => <p className="text-lg leading-relaxed">{children}</p>,
+                        h2: ({children}) => <h2 className="text-2xl font-bold mt-8 mb-4">{children}</h2>,
+                        h3: ({children}) => <h3 className="text-xl font-semibold mt-6 mb-3">{children}</h3>,
+                        blockquote: ({children}) => <blockquote className="border-l-4 border-gray-300 pl-4 italic">{children}</blockquote>,
+                      },
+                    }}
+                  />
                 </div>
               )}
             </div>
@@ -60,7 +70,7 @@ export default async function AboutPage() {
               {about.skills.map((skill: string, index: number) => (
                 <span
                   key={index}
-                  className="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                  className="px-4 py-2 bg-[var(--accent)]/10 text-[var(--accent)] rounded-full text-sm font-medium"
                 >
                   {skill}
                 </span>

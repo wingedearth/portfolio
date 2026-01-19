@@ -48,7 +48,7 @@ export default function MediaGallery({ media }: MediaGalleryProps) {
               onClick={() => setSelectedIndex(index)}
               className={`relative flex-shrink-0 w-24 h-24 rounded-md overflow-hidden border-2 transition-all ${
                 selectedIndex === index
-                  ? 'border-blue-500 ring-2 ring-blue-200'
+                  ? 'border-[var(--accent)] ring-2 ring-[var(--accent)]/30'
                   : 'border-gray-300 hover:border-gray-400'
               }`}
             >
