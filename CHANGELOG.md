@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/wingedearth/portfolio/compare/v0.1.7...v0.1.8) (2026-01-20)
+
+
+### Features
+
+* add hover effects and active state indicators ([5f96c59](https://github.com/wingedearth/portfolio/commit/5f96c590837e712e604c44725c83c24cc08822ee))
+
 ### [0.1.7](https://github.com/wingedearth/portfolio/compare/v0.1.6...v0.1.7) (2026-01-20)
 
 
