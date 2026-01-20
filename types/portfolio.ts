@@ -8,7 +8,8 @@ export interface MediaItem {
 }
 
 export interface Project {
-  id: string;
+  _id?: string; // From Sanity
+  id?: string; // For backward compatibility
   title: string;
   slug: string;
   description: string;
@@ -21,7 +22,8 @@ export interface Project {
 }
 
 export interface ProjectCollection {
-  id: string;
+  _id?: string; // From Sanity
+  id: string; // slug from Sanity
   name: string;
   description: string;
   projects: Project[];
