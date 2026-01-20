@@ -15,6 +15,17 @@ export default function MediaGallery({ media }: MediaGalleryProps) {
 
   const selectedMedia = media[selectedIndex];
 
+  // Helper to check if URL is a Vimeo link
+  const isVimeoUrl = (url: string) => {
+    return url.includes('vimeo.com');
+  };
+
+  // Extract Vimeo video ID from URL
+  const getVimeoId = (url: string) => {
+    const match = url.match(/vimeo\.com\/(\d+)/);
+    return match ? match[1] : null;
+  };
+
   return (
     <div className="space-y-4">
       {/* Main media display */}
@@ -26,6 +37,14 @@ export default function MediaGallery({ media }: MediaGalleryProps) {
             fill
             className="object-cover"
             priority={selectedIndex === 0}
+          />
+        ) : isVimeoUrl(selectedMedia.url) ? (
+          <iframe
+            src={`https://player.vimeo.com/video/${getVimeoId(selectedMedia.url)}?title=0&byline=0&portrait=0`}
+            className="w-full h-full"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
           />
         ) : (
           <video
