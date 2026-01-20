@@ -28,3 +28,12 @@ body {
   color: var(--foreground);
   font-family: var(--font-raleway), system-ui, sans-serif;
 }
+
+@keyframes slideIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

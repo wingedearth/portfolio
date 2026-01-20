@@ -45,21 +45,21 @@ export const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
           <nav className="flex flex-col gap-6">
             <Link
               href="/"
-              className="text-lg text-gray-700 hover:text-gray-900 transition-colors"
+              className="text-lg text-gray-700 hover:text-[var(--accent)] transition-colors"
               onClick={onClose}
             >
               Home
             </Link>
             <Link
               href="/about"
-              className="text-lg text-gray-700 hover:text-gray-900 transition-colors"
+              className="text-lg text-gray-700 hover:text-[var(--accent)] transition-colors"
               onClick={onClose}
             >
               About
             </Link>
             <Link
               href="/contact"
-              className="text-lg text-gray-700 hover:text-gray-900 transition-colors"
+              className="text-lg text-gray-700 hover:text-[var(--accent)] transition-colors"
               onClick={onClose}
             >
               Contact

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { MobileDrawer } from './MobileDrawer';
 
 interface HeaderClientProps {
@@ -11,6 +12,13 @@ interface HeaderClientProps {
 
 export const HeaderClient = ({ title, subtitle }: HeaderClientProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const navItems = [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'Contact', href: '/contact' },
+  ];
 
   return (
     <header className="sticky top-0 bg-white shadow-sm z-30">
@@ -22,16 +30,28 @@ export const HeaderClient = ({ title, subtitle }: HeaderClientProps) => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex gap-8 mt-1">
-            <Link href="/" className="text-gray-700 hover:text-gray-900 transition-colors">
-              Home
-            </Link>
-            <Link href="/about" className="text-gray-700 hover:text-gray-900 transition-colors">
-              About
-            </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-gray-900 transition-colors">
-              Contact
-            </Link>
+          <nav className="hidden md:flex gap-8 mt-1 relative">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`relative pb-1 text-gray-700 hover:text-[var(--accent)] transition-colors group ${
+                    isActive ? 'text-[var(--accent)]' : ''
+                  }`}
+                >
+                  {item.label}
+                  <span 
+                    className={`absolute bottom-0 left-0 h-0.5 origin-left transition-all duration-300 ease-out ${
+                      isActive 
+                        ? 'w-full bg-[var(--accent)]' 
+                        : 'w-0 group-hover:w-full bg-gray-300'
+                    }`}
+                  />
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Hamburger Button */}

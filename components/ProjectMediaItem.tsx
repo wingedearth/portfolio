@@ -69,13 +69,13 @@ export default function ProjectMediaItem({ media, isFirst = false }: ProjectMedi
 
   return (
     <div className="w-full mb-12">
-      <div className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden">
+      <div className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden group">
         {media.type === 'image' ? (
           <Image
             src={media.url}
             alt={media.alt || ''}
             fill
-            className="object-cover"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
             priority={isFirst}
           />
         ) : isVimeoUrl(media.url) ? (
