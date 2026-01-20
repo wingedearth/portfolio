@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/wingedearth/portfolio/compare/v0.1.5...v0.1.6) (2026-01-20)
+
+
+### Features
+
+* **cms:** deploy Sanity Studio to cloud hosting ([7129450](https://github.com/wingedearth/portfolio/commit/7129450d9366743fa4edb52ff9c258b9aeba4afe))
+* **components:** add Vimeo video embed support to MediaGallery ([1b3f3b3](https://github.com/wingedearth/portfolio/commit/1b3f3b3a8ad4c540f1004b1130d14c273864a3d7))
+* **components:** minimize Vimeo branding in embedded player ([c4c7b9e](https://github.com/wingedearth/portfolio/commit/c4c7b9e81efbb433023874b9ef67965277106767))
+* **pages:** add Contact page with Sanity integration ([1ba0825](https://github.com/wingedearth/portfolio/commit/1ba0825df9d2e79b363aeee62c13803d32b8c0a0))
+* redesign project page layout and add breadcrumb navigation ([7e574f6](https://github.com/wingedearth/portfolio/commit/7e574f6f74c7a2dda5be9a78378f42d08f47fe19))
+
+
+### Bug Fixes
+
+* **cms:** hardcode Sanity credentials for deployed Studio ([7a67f2e](https://github.com/wingedearth/portfolio/commit/7a67f2e866b515b7965176e854dbeecbd095fecd))
+* update component keys to use Sanity _id field ([0addb09](https://github.com/wingedearth/portfolio/commit/0addb09805d0651dc05042882bfac0e3fa1d0a75))
+
 ### [0.1.5](https://github.com/wingedearth/portfolio/compare/v0.1.4...v0.1.5) (2026-01-19)
 
 
