@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "createdAt": "2026-01-20T04:28:26.776Z",
+  "workspaces": [
+    {
+      "name": "default",
+      "title": "Portfolio Platform",
+      "basePath": "/studio",
+      "projectId": "w2kdqr08",
+      "dataset": "production",
+      "icon": null,
+      "mediaLibrary": {
+        "enabled": false
+      },
+      "schema": "3be38457.create-schema.json",
+      "tools": "d8640c31.create-tools.json"
+    }
+  ],
+  "studioVersion": "5.4.0"
+}

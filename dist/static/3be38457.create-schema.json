@@ -1,0 +1,626 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Portfolio Title"
+      },
+      {
+        "name": "subtitle",
+        "type": "string"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "name": "owner",
+        "type": "string",
+        "title": "Owner Name"
+      },
+      {
+        "name": "email",
+        "type": "string",
+        "title": "Contact Email"
+      }
+    ],
+    "name": "portfolio",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "to": [
+          {
+            "type": "portfolio"
+          }
+        ],
+        "name": "portfolio",
+        "type": "reference"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Project Title"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "rows": 3,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "description",
+        "type": "text",
+        "title": "Short Description"
+      },
+      {
+        "rows": 6,
+        "name": "longDescription",
+        "type": "text"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "thumbnail",
+        "type": "image",
+        "title": "Thumbnail Image"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "options": {
+                  "list": [
+                    {
+                      "title": "Image",
+                      "value": "image"
+                    },
+                    {
+                      "title": "Video",
+                      "value": "video"
+                    }
+                  ]
+                },
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "valid",
+                        "constraint": [
+                          "image",
+                          "video"
+                        ]
+                      },
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "type",
+                "type": "string",
+                "title": "Media Type"
+              },
+              {
+                "options": {
+                  "hotspot": true
+                },
+                "hidden": "conditional",
+                "name": "image",
+                "type": "image"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "uri",
+                        "constraint": {
+                          "options": {
+                            "scheme": [
+                              "/^http$/",
+                              "/^https$/"
+                            ],
+                            "allowRelative": false,
+                            "relativeOnly": false,
+                            "allowCredentials": false
+                          }
+                        }
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "hidden": "conditional",
+                "name": "videoUrl",
+                "type": "url",
+                "title": "Video URL"
+              },
+              {
+                "options": {
+                  "hotspot": true
+                },
+                "hidden": "conditional",
+                "name": "videoThumbnail",
+                "type": "image"
+              },
+              {
+                "name": "alt",
+                "type": "string",
+                "title": "Alt Text"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "name": "media",
+        "type": "array",
+        "title": "Media Gallery"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "tags",
+        "type": "array"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1900
+              },
+              {
+                "flag": "max",
+                "constraint": 2100
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "year",
+        "type": "number"
+      },
+      {
+        "initialValue": false,
+        "name": "featured",
+        "type": "boolean",
+        "title": "Featured Project"
+      }
+    ],
+    "name": "project",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "to": [
+          {
+            "type": "portfolio"
+          }
+        ],
+        "name": "portfolio",
+        "type": "reference"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "name",
+        "type": "string",
+        "title": "Collection Name"
+      },
+      {
+        "options": {
+          "source": "name",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "rows": 3,
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "thumbnail",
+        "type": "image",
+        "title": "Thumbnail Image"
+      },
+      {
+        "of": [
+          {
+            "to": [
+              {
+                "type": "project"
+              }
+            ],
+            "type": "reference",
+            "title": "Reference to project"
+          }
+        ],
+        "name": "projects",
+        "type": "array"
+      }
+    ],
+    "name": "collection",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "to": [
+          {
+            "type": "portfolio"
+          }
+        ],
+        "name": "portfolio",
+        "type": "reference"
+      },
+      {
+        "description": "Main heading for the about page",
+        "name": "heading",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "marks": {
+              "annotations": [
+                {
+                  "fields": [
+                    {
+                      "validation": [
+                        {
+                          "rules": [
+                            {
+                              "flag": "uri",
+                              "constraint": {
+                                "options": {
+                                  "scheme": [
+                                    "/^http$/",
+                                    "/^https$/"
+                                  ],
+                                  "allowRelative": false,
+                                  "relativeOnly": false,
+                                  "allowCredentials": false
+                                }
+                              }
+                            }
+                          ],
+                          "level": "error"
+                        }
+                      ],
+                      "name": "href",
+                      "type": "url",
+                      "title": "URL"
+                    }
+                  ],
+                  "name": "link",
+                  "type": "object"
+                }
+              ],
+              "decorators": [
+                {
+                  "value": "strong",
+                  "title": "Strong"
+                },
+                {
+                  "value": "em",
+                  "title": "Emphasis"
+                },
+                {
+                  "value": "code",
+                  "title": "Code"
+                }
+              ]
+            },
+            "lists": [
+              {
+                "value": "bullet",
+                "title": "Bulleted list"
+              },
+              {
+                "value": "number",
+                "title": "Numbered list"
+              }
+            ],
+            "styles": [
+              {
+                "value": "normal",
+                "title": "Normal"
+              },
+              {
+                "value": "h2",
+                "title": "H2"
+              },
+              {
+                "value": "h3",
+                "title": "H3"
+              },
+              {
+                "value": "blockquote",
+                "title": "Quote"
+              }
+            ],
+            "of": [],
+            "type": "block"
+          }
+        ],
+        "name": "bio",
+        "type": "array"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "profileImage",
+        "type": "image"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "skills",
+        "type": "array"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "options": {
+                  "list": [
+                    {
+                      "title": "GitHub",
+                      "value": "github"
+                    },
+                    {
+                      "title": "LinkedIn",
+                      "value": "linkedin"
+                    },
+                    {
+                      "title": "Twitter",
+                      "value": "twitter"
+                    },
+                    {
+                      "title": "Instagram",
+                      "value": "instagram"
+                    },
+                    {
+                      "title": "Dribbble",
+                      "value": "dribbble"
+                    },
+                    {
+                      "title": "Behance",
+                      "value": "behance"
+                    },
+                    {
+                      "title": "Website",
+                      "value": "website"
+                    },
+                    {
+                      "title": "Other",
+                      "value": "other"
+                    }
+                  ]
+                },
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "valid",
+                        "constraint": [
+                          "github",
+                          "linkedin",
+                          "twitter",
+                          "instagram",
+                          "dribbble",
+                          "behance",
+                          "website",
+                          "other"
+                        ]
+                      },
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "platform",
+                "type": "string"
+              },
+              {
+                "validation": [
+                  {
+                    "rules": [
+                      {
+                        "flag": "uri",
+                        "constraint": {
+                          "options": {
+                            "scheme": [
+                              "/^http$/",
+                              "/^https$/"
+                            ],
+                            "allowRelative": false,
+                            "relativeOnly": false,
+                            "allowCredentials": false
+                          }
+                        }
+                      },
+                      {
+                        "flag": "presence",
+                        "constraint": "required"
+                      }
+                    ],
+                    "level": "error"
+                  }
+                ],
+                "name": "url",
+                "type": "url",
+                "title": "URL"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "name": "socialLinks",
+        "type": "array"
+      }
+    ],
+    "name": "about",
+    "type": "document"
+  }
+]
