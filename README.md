@@ -5,10 +5,11 @@ A modern, responsive portfolio website built with Next.js, React, and TypeScript
 ## Features
 
 - 🎨 **Project Collections**: Organize projects into thematic collections
-- 🖼️ **Media Galleries**: Display images and videos with interactive gallery navigation
-- 📱 **Responsive Design**: Mobile-first design with Tailwind CSS
+- 🖼️ **Full-Width Media Layout**: Stunning vertical layout with edge-to-edge media on smaller screens
+- 📱 **Responsive Design**: Mobile-first design with Tailwind CSS and adaptive breakpoints
 - ⚡ **Static Site Generation**: Fast loading with Next.js SSG
-- 🎬 **Video Support**: Native video playback with custom thumbnails
+- 🎬 **Smart Video Playback**: Auto-play on scroll, Vimeo integration, muted by default
+- 🧭 **Breadcrumb Navigation**: Clear navigation hierarchy across pages
 - 🔍 **SEO Friendly**: Optimized for search engines
 - 🎯 **TypeScript**: Fully typed for better development experience
 - 🗄️ **Sanity CMS**: Headless CMS for managing multiple portfolios
@@ -53,64 +54,71 @@ npm start
 ```
 portfolio/
 ├── app/                          # Next.js app directory
+│   ├── about/                   # About page
 │   ├── collections/[id]/        # Collection detail pages
+│   ├── contact/                 # Contact page
 │   ├── projects/[slug]/         # Project detail pages
+│   ├── studio/                  # Sanity Studio route
 │   └── page.tsx                 # Home page
 ├── components/                   # React components
+│   ├── Breadcrumb.tsx           # Breadcrumb navigation
 │   ├── CollectionCard.tsx       # Collection preview card
-│   ├── MediaGallery.tsx         # Image/video gallery
-│   └── ProjectCard.tsx          # Project preview card
-├── data/                        # Data files
-│   └── portfolio-data.ts        # Projects and collections data
+│   ├── Header.tsx               # Site header (server)
+│   ├── HeaderClient.tsx         # Site header (client)
+│   ├── ProjectCard.tsx          # Project preview card
+│   └── ProjectMediaItem.tsx     # Full-width media display
+├── lib/                         # Utilities
+│   ├── queries.ts               # Sanity GROQ queries
+│   └── sanity.ts                # Sanity client config
+├── sanity/                      # Sanity CMS
+│   └── schemas/                 # Content schemas
 ├── types/                       # TypeScript types
 │   └── portfolio.ts             # Type definitions
 └── public/                      # Static assets
 ```
 
-## Adding Your Own Projects
+## Managing Content
 
-Edit `data/portfolio-data.ts` to add your own projects:
+All content is managed through Sanity CMS. Access the studio at:
+- **Local**: [http://localhost:3000/studio](http://localhost:3000/studio)
+- **Cloud**: [https://portfolio-platform.sanity.studio/](https://portfolio-platform.sanity.studio/)
 
-```typescript
-{
-  id: 'unique-id',
-  title: 'Project Title',
-  slug: 'project-url-slug',
-  description: 'Short description',
-  longDescription: 'Detailed description',
-  media: [
-    {
-      type: 'image',
-      url: '/path/to/image.jpg',
-      alt: 'Image description',
-    },
-    {
-      type: 'video',
-      url: '/path/to/video.mp4',
-      thumbnail: '/path/to/thumbnail.jpg',
-      alt: 'Video description',
-    },
-  ],
-  tags: ['Tag1', 'Tag2'],
-  year: 2024,
-  featured: true,
-  thumbnail: '/path/to/thumbnail.jpg', // Optional
-}
-```
+### Content Types
+
+**Portfolio**: Site-wide settings (title, subtitle, contact info)
+
+**Project**: Individual creative works
+- Title, slug, descriptions (short & long)
+- Media gallery (images and videos)
+- Tags, year, featured status
+- Automatically linked to collections
+
+**Collection**: Grouped projects
+- Name, slug, description
+- Project references
+- Thumbnail image
+
+**About**: About page content
+- Rich text bio with PortableText
+- Profile image
+- Skills and social links
+
+See [SANITY_SETUP.md](./SANITY_SETUP.md) for detailed setup instructions.
 
 ## Media Guidelines
 
 ### Recommended Media Hosting
 
-**Images** - [Cloudinary](https://cloudinary.com) (Recommended)
-- Free tier: 25 GB storage with generous bandwidth
+**Images** - [Cloudinary](https://cloudinary.com) or Sanity CDN (Recommended)
+- Sanity includes CDN hosting for uploaded images
+- Cloudinary free tier: 25 GB storage with generous bandwidth
 - Automatic image optimization and transformations
 - Fast CDN delivery worldwide
-- On-the-fly resizing and format conversion
 
 **Videos** - [Vimeo](https://vimeo.com) (Recommended)
 - Professional video hosting with clean player
-- Privacy controls and custom player options
+- Privacy controls: Set videos to "Unlisted" or "Public" with "Anywhere" embedding
+- Automatic scroll-triggered playback on project pages
 - Reliable streaming with adaptive quality
 - Free tier available for basic hosting
 
@@ -120,9 +128,11 @@ Edit `data/portfolio-data.ts` to add your own projects:
 - Use external URLs or place files in the `public` directory
 
 ### Videos
-- Supported formats: MP4, WebM
-- Include a thumbnail image for better UX
-- Consider file size for optimal loading
+- Supported formats: MP4, WebM, Vimeo URLs
+- Vimeo videos are automatically detected and embedded
+- Videos auto-play when scrolled into view (50% visible)
+- All videos are muted by default; first video auto-plays on page load
+- Include a thumbnail image for better UX with native videos
 
 ### External Media
 To use external media sources, add the domain to `next.config.ts`:
@@ -141,8 +151,10 @@ images: {
 ## Customization
 
 ### Styling
-All styles use Tailwind CSS. Customize colors and design in:
-- `tailwind.config.ts` - Theme configuration
+All styles use Tailwind CSS with custom accent colors:
+- **Accent Color**: Defined in `app/globals.css` as CSS variables
+- **Fonts**: Raleway (primary) and Montserrat (secondary) via next/font/google
+- **Breakpoints**: Standard Tailwind breakpoints (sm: 640px, md: 768px, lg: 1024px, xl: 1280px, 2xl: 1536px)
 - Component files - Individual component styles
 
 ### Layout
