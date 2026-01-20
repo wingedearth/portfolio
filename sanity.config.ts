@@ -7,8 +7,8 @@ export default defineConfig({
   name: 'default',
   title: 'Portfolio Platform',
 
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'w2kdqr08',
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
 
   plugins: [structureTool(), visionTool()],
 
