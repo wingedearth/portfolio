@@ -19,6 +19,10 @@ export interface Project {
   year?: number;
   featured?: boolean;
   thumbnail?: string;
+  collection?: {
+    name: string;
+    id: string;
+  };
 }
 
 export interface ProjectCollection {

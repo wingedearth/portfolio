@@ -17,8 +17,8 @@ export const HeaderClient = ({ title, subtitle }: HeaderClientProps) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-start justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
-            <p className="mt-1 text-[var(--accent)] font-semibold">{subtitle}</p>
+            <h1 className="text-3xl font-bold text-gray-900 leading-tight">{title}</h1>
+            <p className="text-[var(--accent)] font-semibold leading-tight">{subtitle}</p>
           </div>
 
           {/* Desktop Navigation */}

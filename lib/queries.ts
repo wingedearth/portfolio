@@ -91,7 +91,11 @@ export const projectBySlugQuery = groq`
     },
     tags,
     year,
-    featured
+    featured,
+    "collection": *[_type == "collection" && references(^._id)][0] {
+      name,
+      "id": slug.current
+    }
   }
 `;
 

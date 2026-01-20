@@ -40,7 +40,7 @@ export default function MediaGallery({ media }: MediaGalleryProps) {
           />
         ) : isVimeoUrl(selectedMedia.url) ? (
           <iframe
-            src={`https://player.vimeo.com/video/${getVimeoId(selectedMedia.url)}?title=0&byline=0&portrait=0&badge=0`}
+            src={`https://player.vimeo.com/video/${getVimeoId(selectedMedia.url)}?title=0&byline=0&portrait=0&badge=0&autoplay=1`}
             className="w-full h-full"
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture"

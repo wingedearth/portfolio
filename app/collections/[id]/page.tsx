@@ -3,6 +3,7 @@ import { client } from '@/lib/sanity';
 import { collectionByIdQuery, collectionsQuery } from '@/lib/queries';
 import ProjectCard from '@/components/ProjectCard';
 import { Header } from '@/components/Header';
+import Breadcrumb from '@/components/Breadcrumb';
 
 interface CollectionPageProps {
   params: Promise<{
@@ -25,11 +26,19 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
     notFound();
   }
 
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: collection.name, href: `/collections/${collection.id}` },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12">
+        {/* Breadcrumbs */}
+        <Breadcrumb items={breadcrumbItems} />
+
         {/* Collection Header */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-3">{collection.name}</h1>
