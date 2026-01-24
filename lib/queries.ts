@@ -38,11 +38,12 @@ export const projectsQuery = groq`
 `;
 
 export const collectionsQuery = groq`
-  *[_type == "collection"] | order(_createdAt desc) {
+  *[_type == "collection"] | order(order asc, _createdAt desc) {
     _id,
     name,
     "id": slug.current,
     description,
+    order,
     "thumbnail": thumbnail.asset->url,
     "projects": projects[]-> {
       _id,

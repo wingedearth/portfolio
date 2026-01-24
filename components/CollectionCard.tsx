@@ -7,33 +7,40 @@ interface CollectionCardProps {
 }
 
 export default function CollectionCard({ collection }: CollectionCardProps) {
-  const firstMedia = collection.projects[0]?.media[0];
+  const { id, name = '', thumbnail } = collection;
+  const projects = collection.projects || [];
+  const firstProject = projects?.[0] || {};
+  const firstMedia = firstProject.media?.[0];
   const thumbnailUrl = 
-    collection.thumbnail || 
-    collection.projects[0]?.thumbnail || 
+    thumbnail || 
+    firstProject.thumbnail || 
     (firstMedia?.type === 'video' ? firstMedia?.thumbnail : firstMedia?.url);
 
   return (
     <Link
-      href={`/collections/${collection.id}`}
-      className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow"
+      href={`/collections/${id}`}
+      className="group block rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all"
     >
-      {thumbnailUrl && (
-        <div className="relative aspect-video bg-gray-100">
+      <div className="relative aspect-[4/3] bg-gray-100">
+        {thumbnailUrl && (
           <Image
             src={thumbnailUrl}
-            alt={collection.name}
+            alt={name}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
-        </div>
-      )}
-      <div className="p-5">
-        <h3 className="text-2xl font-bold text-gray-900 group-hover:text-[var(--accent)] transition-colors mb-2">
-          {collection.name}
-        </h3>
-        <div className="text-sm text-gray-500">
-          {collection.projects.length} {collection.projects.length === 1 ? 'project' : 'projects'}
+        )}
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+        
+        {/* Black overlay that fades on hover */}
+        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300" />
+        
+        {/* Text overlay */}
+        <div className="absolute inset-0 flex items-center justify-center p-6">
+          <h3 className="text-3xl font-bold text-white text-center">
+            {name}
+          </h3>
         </div>
       </div>
     </Link>

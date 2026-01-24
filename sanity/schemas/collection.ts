@@ -53,6 +53,13 @@ export default defineType({
         },
       ],
     },
+    {
+      name: 'order',
+      title: 'Display Order',
+      type: 'number',
+      description: 'Lower numbers appear first',
+      validation: (Rule) => Rule.integer().min(0),
+    },
   ],
   preview: {
     select: {
