@@ -7,7 +7,8 @@ export const portfolioQuery = groq`
     subtitle,
     slug,
     owner,
-    email
+    email,
+    featuredProjectsTitle
   }
 `;
 

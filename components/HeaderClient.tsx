@@ -24,10 +24,10 @@ export const HeaderClient = ({ title, subtitle }: HeaderClientProps) => {
     <header className="sticky top-0 bg-white shadow-sm z-30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-start justify-between">
-          <div>
+          <Link href="/" className="hover:opacity-80 transition-opacity">
             <h1 className="text-3xl font-bold text-gray-900 leading-tight">{title}</h1>
             <p className="text-[var(--accent)] font-semibold leading-tight">{subtitle}</p>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-8 mt-1 relative">

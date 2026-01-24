@@ -36,5 +36,11 @@ export default defineType({
       title: 'Contact Email',
       type: 'string',
     },
+    {
+      name: 'featuredProjectsTitle',
+      title: 'Featured Projects Section Title',
+      type: 'string',
+      description: 'Optional custom title for the featured projects section (defaults to "Featured Projects")',
+    },
   ],
 });
