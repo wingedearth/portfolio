@@ -4,11 +4,12 @@ A modern, responsive portfolio website built with Next.js, React, and TypeScript
 
 ## Features
 
-- 🎨 **Project Collections**: Organize projects into thematic collections
-- 🖼️ **Full-Width Media Layout**: Stunning vertical layout with edge-to-edge media on smaller screens
+- 🎨 **Project Collections**: Organize projects into thematic collections with manual ordering
+- 🖼️ **Full-Width Media Layout**: Hero featured project with edge-to-edge display below 2xl breakpoint
 - 📱 **Responsive Design**: Mobile-first design with Tailwind CSS and adaptive breakpoints
 - ⚡ **Static Site Generation**: Fast loading with Next.js SSG
-- 🎬 **Smart Video Playback**: Auto-play on scroll, Vimeo integration, muted by default
+- 🎬 **Smart Video Playback**: Featured projects autoplay with muted audio, background mode for Vimeo
+- 🎥 **Video Background Cards**: Autoplaying video backgrounds on project and collection cards
 - 🧭 **Breadcrumb Navigation**: Clear navigation hierarchy across pages
 - 🔍 **SEO Friendly**: Optimized for search engines
 - 🎯 **TypeScript**: Fully typed for better development experience
@@ -85,18 +86,22 @@ All content is managed through Sanity CMS. Access the studio at:
 
 ### Content Types
 
-**Portfolio**: Site-wide settings (title, subtitle, contact info)
+**Portfolio**: Site-wide settings
+- Title, subtitle, contact info
+- Optional custom title for featured projects section
 
 **Project**: Individual creative works
 - Title, slug, descriptions (short & long)
 - Media gallery (images and videos)
 - Tags, year, featured status
 - Automatically linked to collections
+- Featured projects display as hero on homepage (limited to 1)
 
 **Collection**: Grouped projects
 - Name, slug, description
 - Project references
 - Thumbnail image
+- Manual ordering via Display Order field (lower numbers appear first)
 
 **About**: About page content
 - Rich text bio with PortableText
@@ -130,8 +135,10 @@ See [SANITY_SETUP.md](./SANITY_SETUP.md) for detailed setup instructions.
 ### Videos
 - Supported formats: MP4, WebM, Vimeo URLs
 - Vimeo videos are automatically detected and embedded
-- Videos auto-play when scrolled into view (50% visible)
-- All videos are muted by default; first video auto-plays on page load
+- Featured projects with videos autoplay on homepage load (muted, looping)
+- Project detail pages: first video autoplays, others play when scrolled into view (50% visible)
+- Vimeo videos use background mode on homepage for seamless autoplay
+- All videos are muted by default
 - Include a thumbnail image for better UX with native videos
 
 ### External Media
@@ -159,9 +166,15 @@ All styles use Tailwind CSS with custom accent colors:
 
 ### Layout
 Modify the layout in:
-- `app/page.tsx` - Home page layout
-- `app/projects/[slug]/page.tsx` - Project page layout
+- `app/page.tsx` - Home page with hero featured project and collections grid
+- `app/projects/[slug]/page.tsx` - Project detail page with full-width media
 - `app/collections/[id]/page.tsx` - Collection page layout
+
+### Featured Projects
+- Homepage displays single featured project as hero (full-width below 2xl)
+- Projects with videos autoplay muted on page load
+- Mark projects as "featured" in Sanity to display on homepage
+- Custom section title can be set in Portfolio settings (optional)
 
 ## Deployment
 
