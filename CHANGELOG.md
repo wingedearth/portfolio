@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.13](https://github.com/wingedearth/portfolio/compare/v0.1.12...v0.1.13) (2026-01-25)
+
+
+### Features
+
+* make featured project always full-width at all breakpoints ([a1cc0d6](https://github.com/wingedearth/portfolio/commit/a1cc0d609501cebf02149e444ec482c97ffe1a7e))
+
+
+### Code Refactoring
+
+* remove unused MediaGallery component ([074e8e9](https://github.com/wingedearth/portfolio/commit/074e8e993b703479ae0d45fcca9363f2feebdea9))
+
+
+### Documentation
+
+* update README ([18866af](https://github.com/wingedearth/portfolio/commit/18866af7c744d3a2b1b8f05cf40173259229dc49))
+
 ### [0.1.12](https://github.com/wingedearth/portfolio/compare/v0.1.11...v0.1.12) (2026-01-25)
 
 
