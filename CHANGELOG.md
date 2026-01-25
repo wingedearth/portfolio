@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.12](https://github.com/wingedearth/portfolio/compare/v0.1.11...v0.1.12) (2026-01-25)
+
+
+### Features
+
+* add ISR revalidation to auto-update Sanity content ([87d9f8d](https://github.com/wingedearth/portfolio/commit/87d9f8d6628fd6f6cfe3100f53a271ea90a5c5a8))
+
+
+### Bug Fixes
+
+* add TypeScript type annotation for media parameter ([fa92718](https://github.com/wingedearth/portfolio/commit/fa9271866ac5f07b88a882942a2338eef2183f16))
+
 ### [0.1.11](https://github.com/wingedearth/portfolio/compare/v0.1.10...v0.1.11) (2026-01-25)
 
 
