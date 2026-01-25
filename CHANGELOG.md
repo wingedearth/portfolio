@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/wingedearth/portfolio/compare/v0.1.8...v0.1.9) (2026-01-25)
+
+
+### Features
+
+* enhance homepage with full-width featured project and video autoplay ([91d8be2](https://github.com/wingedearth/portfolio/commit/91d8be25838c333c5adc902badc4b3d25d77fc51))
+* redesign collection cards and add manual ordering ([6496abd](https://github.com/wingedearth/portfolio/commit/6496abd69b2b805a52b29a8ae3e405e42e5773ce))
+
+
+### Documentation
+
+* update README with new features and content management details ([fafdd31](https://github.com/wingedearth/portfolio/commit/fafdd3136e4cdbbf3525b2f72a70236803676b17))
+
 ### [0.1.8](https://github.com/wingedearth/portfolio/compare/v0.1.7...v0.1.8) (2026-01-20)
 
 
