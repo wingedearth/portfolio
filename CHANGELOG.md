@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.14](https://github.com/wingedearth/portfolio/compare/v0.1.13...v0.1.14) (2026-01-25)
+
+
+### Features
+
+* redesign collections with alternating zigzag layout ([2b27e42](https://github.com/wingedearth/portfolio/commit/2b27e42f264819af4ec5e54940e5d4a864500c76))
+
 ### [0.1.13](https://github.com/wingedearth/portfolio/compare/v0.1.12...v0.1.13) (2026-01-25)
 
 
