@@ -21,8 +21,8 @@ const Home = async () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       <main>
-        {/* Featured Projects - Full width on smaller screens, contained on 2xl+ */}
-        <div className="2xl:max-w-7xl 2xl:mx-auto 2xl:px-8 mb-12">
+        {/* Featured Projects - Always full width */}
+        <div className="mb-12">
           <div className="grid grid-cols-1 gap-6">
             {featuredProjects.map((project: any) => (
               <ProjectCard key={project._id} project={project} autoplay={true} />
