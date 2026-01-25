@@ -6,6 +6,9 @@ import { Header } from '@/components/Header';
 import Breadcrumb from '@/components/Breadcrumb';
 import { MediaItem } from '@/types/portfolio';
 
+// Revalidate this page every 60 seconds
+export const revalidate = 60;
+
 interface ProjectPageProps {
   params: Promise<{
     slug: string;

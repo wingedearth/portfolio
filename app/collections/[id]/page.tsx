@@ -5,6 +5,9 @@ import ProjectCard from '@/components/ProjectCard';
 import { Header } from '@/components/Header';
 import Breadcrumb from '@/components/Breadcrumb';
 
+// Revalidate this page every 60 seconds
+export const revalidate = 60;
+
 interface CollectionPageProps {
   params: Promise<{
     id: string;
@@ -25,6 +28,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
   if (!collection) {
     notFound();
   }
+  const projects = collection?.projects || [];
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -44,14 +48,14 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
           <h1 className="text-4xl font-bold text-gray-900 mb-3">{collection.name}</h1>
           <p className="text-xl text-gray-600">{collection.description}</p>
           <p className="text-sm text-gray-500 mt-2">
-            {collection.projects.length} {collection.projects.length === 1 ? 'project' : 'projects'}
+            {projects.length} {projects.length === 1 ? 'project' : 'projects'}
           </p>
         </div>
 
         {/* Projects Grid */}
-        {collection.projects.length > 0 ? (
+        {projects.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {collection.projects.map((project: any) => (
+            {projects.map((project: any) => (
               <ProjectCard key={project._id} project={project} />
             ))}
           </div>

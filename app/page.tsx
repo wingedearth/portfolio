@@ -5,6 +5,9 @@ import ProjectCard from '@/components/ProjectCard';
 import { Collections } from '@/components/Collections';
 import { Footer } from '@/components/Footer';
 
+// Revalidate this page every 60 seconds
+export const revalidate = 60;
+
 const Home = async () => {
   const [allProjects, collections, portfolio] = await Promise.all([
     client.fetch(projectsQuery),
