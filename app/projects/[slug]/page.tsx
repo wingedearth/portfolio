@@ -54,18 +54,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <div className="min-h-screen bg-gray-50">
       <Header />
 
-      <main className="max-w-6xl mx-auto pt-6 pb-12">
+      <main className="max-w-6xl mx-auto pt-4 pb-12">
         {/* Breadcrumbs */}
         <div className="px-4 sm:px-6 xl:px-8">
           <Breadcrumb items={breadcrumbItems} />
         </div>
 
         {/* Project Title */}
-        <div className="mb-12 px-4 sm:px-6 xl:px-8">
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">{project.title}</h1>
-          {project.description && (
-            <p className="text-xl text-gray-600">{project.description}</p>
-          )}
+        <div className="mb-4 px-4 sm:px-6 xl:px-8">
+          <h1 className="text-3xl font-bold text-gray-900">{project.title}</h1>
         </div>
 
         {/* First Media Item - Full Width */}
