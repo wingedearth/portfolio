@@ -4,6 +4,7 @@ import { projectBySlugQuery, projectsQuery } from '@/lib/queries';
 import ProjectMediaItem from '@/components/ProjectMediaItem';
 import { Header } from '@/components/Header';
 import Breadcrumb from '@/components/Breadcrumb';
+import { MediaItem } from '@/types/portfolio';
 
 interface ProjectPageProps {
   params: Promise<{
@@ -81,7 +82,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
         {/* Remaining Media Items - Full Width */}
         <div className="xl:px-8">
-          {remainingMedia.map((media, index) => (
+          {remainingMedia.map((media: MediaItem, index: number) => (
             <ProjectMediaItem key={index} media={media} isFirst={false} />
           ))}
         </div>
