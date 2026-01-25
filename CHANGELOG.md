@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.15](https://github.com/wingedearth/portfolio/compare/v0.1.14...v0.1.15) (2026-01-25)
+
+
+### Code Refactoring
+
+* simplify project page header layout ([9e72337](https://github.com/wingedearth/portfolio/commit/9e72337ce9693033c566d49b2e032aa87ccd4273))
+
 ### [0.1.14](https://github.com/wingedearth/portfolio/compare/v0.1.13...v0.1.14) (2026-01-25)
 
 
