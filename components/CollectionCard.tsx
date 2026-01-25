@@ -4,9 +4,10 @@ import Image from 'next/image';
 
 interface CollectionCardProps {
   collection: ProjectCollection;
+  showTitle?: boolean;
 }
 
-export default function CollectionCard({ collection }: CollectionCardProps) {
+export default function CollectionCard({ collection, showTitle = true }: CollectionCardProps) {
   const { id, name = '', thumbnail } = collection;
   const projects = collection.projects || [];
   const firstProject = projects?.[0] || {};
@@ -36,12 +37,14 @@ export default function CollectionCard({ collection }: CollectionCardProps) {
         {/* Black overlay that fades on hover */}
         <div className="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300" />
         
-        {/* Text overlay */}
-        <div className="absolute inset-0 flex items-center justify-center p-6">
-          <h3 className="text-3xl font-bold text-white text-center">
-            {name}
-          </h3>
-        </div>
+        {/* Text overlay - only show if showTitle is true */}
+        {showTitle && (
+          <div className="absolute inset-0 flex items-center justify-center p-6">
+            <h3 className="text-3xl font-bold text-white text-center">
+              {name}
+            </h3>
+          </div>
+        )}
       </div>
     </Link>
   );
