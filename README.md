@@ -7,7 +7,7 @@ A modern, responsive portfolio website built with Next.js, React, and TypeScript
 - 🎨 **Project Collections**: Organize projects into thematic collections with manual ordering
 - 🖼️ **Full-Width Media Layout**: Hero featured project with edge-to-edge display below 2xl breakpoint
 - 📱 **Responsive Design**: Mobile-first design with Tailwind CSS and adaptive breakpoints
-- ⚡ **Static Site Generation**: Fast loading with Next.js SSG
+- ⚡ **Incremental Static Regeneration**: Pages auto-update with new Sanity content every 60 seconds
 - 🎬 **Smart Video Playback**: Featured projects autoplay with muted audio, background mode for Vimeo
 - 🎥 **Video Background Cards**: Autoplaying video backgrounds on project and collection cards
 - 🧭 **Breadcrumb Navigation**: Clear navigation hierarchy across pages
@@ -176,10 +176,24 @@ Modify the layout in:
 - Mark projects as "featured" in Sanity to display on homepage
 - Custom section title can be set in Portfolio settings (optional)
 
+## Content Updates
+
+With Incremental Static Regeneration (ISR) enabled, your deployed site automatically updates with new Sanity content:
+- Pages revalidate every 60 seconds
+- New collections, projects, and content changes appear automatically
+- No manual redeployment needed for content updates
+
 ## Deployment
 
-### Vercel (Recommended)
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new).
+### Heroku
+See [HEROKU_DEPLOYMENT.md](./HEROKU_DEPLOYMENT.md) for detailed Heroku deployment instructions, including:
+- Environment variable configuration
+- Automatic and manual deployment options
+- Troubleshooting tips
+- Custom domain setup
+
+### Vercel (Alternative)
+You can also deploy to the [Vercel Platform](https://vercel.com/new).
 
 ### Other Platforms
 Build the static site and deploy the `.next` folder to any hosting platform that supports Node.js.
