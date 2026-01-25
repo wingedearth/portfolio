@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/wingedearth/portfolio/compare/v0.1.10...v0.1.11) (2026-01-25)
+
+
+### Bug Fixes
+
+* update package-lock.json and specify Node.js 22.x ([6724c50](https://github.com/wingedearth/portfolio/commit/6724c500bb2a0e0cced663efe0590483b653b8cd))
+
 ### [0.1.10](https://github.com/wingedearth/portfolio/compare/v0.1.9...v0.1.10) (2026-01-25)
 
 
