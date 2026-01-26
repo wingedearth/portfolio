@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.17](https://github.com/wingedearth/portfolio/compare/v0.1.16...v0.1.17) (2026-01-26)
+
+
+### Bug Fixes
+
+* rename middleware function to proxy ([c9abe69](https://github.com/wingedearth/portfolio/commit/c9abe69161f61950eac99e29b37e86fe2ddd9aa4))
+* resolve Heroku deployment errors ([2158993](https://github.com/wingedearth/portfolio/commit/2158993fd2f9354465d31e95927d3c591bb61125))
+
+
+### Code Refactoring
+
+* convert proxy to arrow function ([c4543d2](https://github.com/wingedearth/portfolio/commit/c4543d2a34b43eac8da969114d15fe9b7da6d143))
+* reduce authentication cookie expiration to 7 days ([8a810d7](https://github.com/wingedearth/portfolio/commit/8a810d7b015f1821e29c7be0aaa315cb9b738ec7))
+
 ### [0.1.16](https://github.com/wingedearth/portfolio/compare/v0.1.15...v0.1.16) (2026-01-26)
 
 
