@@ -36,8 +36,8 @@ export default function ProjectCard({ project, autoplay = false }: ProjectCardPr
           // Video background with autoplay
           isVimeoUrl(firstMedia.url) ? (
             <iframe
-              src={`https://player.vimeo.com/video/${getVimeoId(firstMedia.url)}?background=1&autoplay=1&loop=1&muted=1&controls=0`}
-              className="absolute inset-0 w-full h-full pointer-events-none"
+              src={`https://player.vimeo.com/video/${getVimeoId(firstMedia.url)}?autoplay=1&loop=1&muted=1`}
+              className="absolute inset-0 w-full h-full"
               frameBorder="0"
               allow="autoplay; fullscreen"
             />
@@ -48,6 +48,7 @@ export default function ProjectCard({ project, autoplay = false }: ProjectCardPr
               loop
               muted
               playsInline
+              controls
               className="absolute inset-0 w-full h-full object-cover"
             />
           )
