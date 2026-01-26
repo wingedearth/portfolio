@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.16](https://github.com/wingedearth/portfolio/compare/v0.1.15...v0.1.16) (2026-01-26)
+
+
+### Features
+
+* add password protection to site ([f668129](https://github.com/wingedearth/portfolio/commit/f668129a684ebcc2fb5894e5b2af011a49335da3))
+
+
+### Bug Fixes
+
+* allow env example to be tracked ([e9c91e1](https://github.com/wingedearth/portfolio/commit/e9c91e1cbc22ff18c002123180d84ee7cd833934))
+
 ### [0.1.15](https://github.com/wingedearth/portfolio/compare/v0.1.14...v0.1.15) (2026-01-25)
 
 
