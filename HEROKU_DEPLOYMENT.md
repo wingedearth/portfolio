@@ -18,6 +18,7 @@ Set the following environment variables in your Heroku app settings:
 NEXT_PUBLIC_SANITY_PROJECT_ID=w2kdqr08
 NEXT_PUBLIC_SANITY_DATASET=production
 NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
+SITE_PASSWORD=your_chosen_password
 ```
 
 ### Setting Environment Variables
@@ -33,6 +34,7 @@ NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
 heroku config:set NEXT_PUBLIC_SANITY_PROJECT_ID=w2kdqr08 --app bubblelab
 heroku config:set NEXT_PUBLIC_SANITY_DATASET=production --app bubblelab
 heroku config:set NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01 --app bubblelab
+heroku config:set SITE_PASSWORD=your_chosen_password --app bubblelab
 ```
 
 ## Deployment Methods
