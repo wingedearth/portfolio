@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function proxy(request: NextRequest) {
+export const proxy = (request: NextRequest) => {
   // Skip authentication for studio, API routes, and static files
   if (
     request.nextUrl.pathname.startsWith('/studio') ||
@@ -31,7 +31,7 @@ export function proxy(request: NextRequest) {
   }
 
   return NextResponse.next();
-}
+};
 
 export const config = {
   matcher: [
