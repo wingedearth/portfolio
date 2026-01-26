@@ -1,5 +1,6 @@
 import { ProjectCollection } from '@/types/portfolio';
 import CollectionCard from './CollectionCard';
+import Link from 'next/link';
 
 interface CollectionsProps {
   collections: ProjectCollection[];
@@ -26,18 +27,22 @@ export const Collections = ({ collections }: CollectionsProps) => {
               <>
                 <CollectionCard collection={collection} showTitle={false} />
                 <div className="flex items-center">
-                  <h3 className="text-4xl font-bold text-gray-900">
-                    {collection.name}
-                  </h3>
+                  <Link href={`/collections/${collection._id}`}>
+                    <h3 className="text-4xl font-bold text-gray-900 hover:text-[var(--accent)] transition-colors cursor-pointer">
+                      {collection.name}
+                    </h3>
+                  </Link>
                 </div>
               </>
             ) : (
               /* Even rows (1, 3, 5...): Title left, Image right */
               <>
                 <div className="flex items-center justify-end">
-                  <h3 className="text-4xl font-bold text-gray-900 text-right">
-                    {collection.name}
-                  </h3>
+                  <Link href={`/collections/${collection._id}`}>
+                    <h3 className="text-4xl font-bold text-gray-900 text-right hover:text-[var(--accent)] transition-colors cursor-pointer">
+                      {collection.name}
+                    </h3>
+                  </Link>
                 </div>
                 <CollectionCard collection={collection} showTitle={false} />
               </>

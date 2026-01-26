@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { MobileDrawer } from './MobileDrawer';
 
@@ -12,12 +12,90 @@ interface HeaderClientProps {
 
 export const HeaderClient = ({ title, subtitle }: HeaderClientProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const pathname = usePathname();
 
+  useEffect(() => {
+    if (pathname !== '/') {
+      setActiveSection('');
+      return;
+    }
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          if (id === 'about') {
+            setActiveSection('about');
+          } else if (id === 'contact') {
+            setActiveSection('contact');
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Observe sections
+    const aboutSection = document.getElementById('about');
+    const contactSection = document.getElementById('contact');
+
+    if (aboutSection) observer.observe(aboutSection);
+    if (contactSection) observer.observe(contactSection);
+
+    // Check if we're at the top of the page
+    const handleScroll = () => {
+      if (window.scrollY < 100) {
+        setActiveSection('home');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [pathname]);
+
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const handleAboutClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      const aboutSection = document.getElementById('about');
+      if (aboutSection) {
+        aboutSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   const navItems = [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Home', href: '/', section: 'home', onClick: handleHomeClick },
+    { label: 'About', href: '/#about', section: 'about', onClick: handleAboutClick },
+    { label: 'Contact', href: '/#contact', section: 'contact', onClick: handleContactClick },
   ];
 
   return (
@@ -32,11 +110,14 @@ export const HeaderClient = ({ title, subtitle }: HeaderClientProps) => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-8 mt-1 relative">
             {navItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = pathname === '/' 
+                ? activeSection === item.section
+                : pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={item.onClick}
                   className={`relative pb-1 text-gray-700 hover:text-[var(--accent)] transition-colors group ${
                     isActive ? 'text-[var(--accent)]' : ''
                   }`}

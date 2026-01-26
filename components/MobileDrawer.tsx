@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 interface MobileDrawerProps {
   isOpen: boolean;
@@ -6,6 +9,15 @@ interface MobileDrawerProps {
 }
 
 export const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
+  const pathname = usePathname();
+
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    onClose();
+  };
   return (
     <>
       {/* Overlay */}
@@ -46,7 +58,7 @@ export const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
             <Link
               href="/"
               className="text-lg text-gray-700 hover:text-[var(--accent)] transition-colors"
-              onClick={onClose}
+              onClick={handleHomeClick}
             >
               Home
             </Link>
