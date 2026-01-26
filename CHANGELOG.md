@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.18](https://github.com/wingedearth/portfolio/compare/v0.1.17...v0.1.18) (2026-01-26)
+
+
+### Features
+
+* add player controls to featured project video ([0f3dad9](https://github.com/wingedearth/portfolio/commit/0f3dad9a8fac16dbe263d4066e0661f2fd001b4a))
+* add project title below featured video ([4039735](https://github.com/wingedearth/portfolio/commit/4039735eccb1bf10f871ff40ea69209a29f5e619))
+
 ### [0.1.17](https://github.com/wingedearth/portfolio/compare/v0.1.16...v0.1.17) (2026-01-26)
 
 
