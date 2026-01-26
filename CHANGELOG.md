@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.20](https://github.com/wingedearth/portfolio/compare/v0.1.19...v0.1.20) (2026-01-26)
+
+
+### Features
+
+* store LinkedIn URL in Sanity and remove Connect section from About ([b74a5a9](https://github.com/wingedearth/portfolio/commit/b74a5a980364efe3a2440bb61d883116d0216804))
+
 ### [0.1.19](https://github.com/wingedearth/portfolio/compare/v0.1.18...v0.1.19) (2026-01-26)
 
 
