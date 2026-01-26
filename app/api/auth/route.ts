@@ -9,12 +9,12 @@ export async function POST(request: NextRequest) {
   if (password === correctPassword) {
     const response = NextResponse.json({ success: true });
     
-    // Set authentication cookie (30 days expiration)
+    // Set authentication cookie (7 days expiration)
     response.cookies.set('portfolio-auth', 'true', {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
-      maxAge: 60 * 60 * 24 * 30, // 30 days
+      maxAge: 60 * 60 * 24 * 7, // 7 days
       path: '/',
     });
     
