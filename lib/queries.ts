@@ -8,7 +8,8 @@ export const portfolioQuery = groq`
     slug,
     owner,
     email,
-    featuredProjectsTitle
+    featuredProjectsTitle,
+    linkedinUrl
   }
 `;
 

@@ -4,6 +4,7 @@ interface ContactSectionProps {
   portfolio: {
     email?: string;
     owner?: string;
+    linkedinUrl?: string;
   };
 }
 
@@ -37,27 +38,24 @@ export const ContactSection = ({ portfolio }: ContactSectionProps) => {
           </div>
         )}
 
-        <div className="pt-6 border-t border-gray-200">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">Connect With Me</h3>
-          <p className="text-gray-600 mb-4">
-            You can also find me on social media. Check out my work and let's connect!
-          </p>
-          <div className="flex gap-4">
-            <a
-              href="#about"
-              onClick={(e) => {
-                e.preventDefault();
-                const aboutSection = document.getElementById('about');
-                if (aboutSection) {
-                  aboutSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="px-6 py-3 bg-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent-hover)] transition-colors font-medium"
-            >
-              View Social Links
-            </a>
+        {portfolio?.linkedinUrl && (
+          <div className="pt-6 border-t border-gray-200">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">Connect With Me</h3>
+            <p className="text-gray-600 mb-4">
+              You can also find me on social media. Check out my work and let's connect!
+            </p>
+            <div className="flex gap-4">
+              <a
+                href={portfolio.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 bg-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent-hover)] transition-colors font-medium"
+              >
+                LinkedIn
+              </a>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

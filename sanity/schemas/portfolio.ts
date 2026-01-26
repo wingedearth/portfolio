@@ -42,5 +42,11 @@ export default defineType({
       type: 'string',
       description: 'Optional custom title for the featured projects section (defaults to "Featured Projects")',
     },
+    {
+      name: 'linkedinUrl',
+      title: 'LinkedIn URL',
+      type: 'url',
+      description: 'Your LinkedIn profile URL',
+    },
   ],
 });

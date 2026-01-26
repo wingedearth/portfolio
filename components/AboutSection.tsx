@@ -69,25 +69,6 @@ export const AboutSection = ({ about }: AboutSectionProps) => {
         </div>
       )}
 
-      {/* Social Links Section */}
-      {about.socialLinks && about.socialLinks.length > 0 && (
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Connect</h3>
-          <div className="flex flex-wrap gap-4">
-            {about.socialLinks.map((link: { platform: string; url: string }, index: number) => (
-              <a
-                key={index}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors font-medium text-gray-700 capitalize"
-              >
-                {link.platform}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 };
