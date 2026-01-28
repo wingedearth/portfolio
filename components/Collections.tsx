@@ -27,7 +27,7 @@ export const Collections = ({ collections }: CollectionsProps) => {
               <>
                 <CollectionCard collection={collection} showTitle={false} />
                 <div className="flex items-center">
-                  <Link href={`/collections/${collection._id}`}>
+                  <Link href={`/collections/${collection.id}`}>
                     <h3 className="text-4xl font-bold text-gray-900 hover:text-[var(--accent)] transition-colors cursor-pointer">
                       {collection.name}
                     </h3>
@@ -38,7 +38,7 @@ export const Collections = ({ collections }: CollectionsProps) => {
               /* Even rows (1, 3, 5...): Title left, Image right */
               <>
                 <div className="flex items-center justify-end">
-                  <Link href={`/collections/${collection._id}`}>
+                  <Link href={`/collections/${collection.id}`}>
                     <h3 className="text-4xl font-bold text-gray-900 text-right hover:text-[var(--accent)] transition-colors cursor-pointer">
                       {collection.name}
                     </h3>
