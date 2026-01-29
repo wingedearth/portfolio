@@ -117,7 +117,7 @@ export const HeaderClient = ({ title, subtitle, titleFont }: HeaderClientProps) 
     <header className="sticky top-0 bg-white shadow-sm z-30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-start justify-between">
-          <Link href="/" className="hover:opacity-80 transition-opacity">
+          <Link href="/" onClick={handleHomeClick} className="hover:opacity-80 transition-opacity">
             <h1 
               className="text-4xl font-bold text-gray-900 leading-tight"
               style={{ fontFamily: getFontFamily(titleFont) }}

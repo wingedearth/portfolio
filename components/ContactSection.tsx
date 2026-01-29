@@ -31,13 +31,6 @@ export const ContactSection = ({ portfolio }: ContactSectionProps) => {
           </div>
         )}
 
-        {portfolio?.owner && (
-          <div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Name</h3>
-            <p className="text-lg text-gray-700">{portfolio.owner}</p>
-          </div>
-        )}
-
         {portfolio?.linkedinUrl && (
           <div className="pt-6 border-t border-gray-200">
             <h3 className="text-xl font-semibold text-gray-900 mb-4">Connect With Me</h3>
