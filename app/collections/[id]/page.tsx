@@ -45,7 +45,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
 
         {/* Collection Header */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">{collection.name}</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-3">{collection.name}</h1>
           <p className="text-xl text-gray-600">{collection.description}</p>
           <p className="text-sm text-gray-500 mt-2">
             {projects.length} {projects.length === 1 ? 'project' : 'projects'}

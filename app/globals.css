@@ -14,6 +14,7 @@
   --color-accent-hover: var(--accent-hover);
   --font-sans: var(--font-raleway);
   --font-secondary: var(--font-montserrat);
+  --font-title: var(--font-libre-bodoni);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -48,5 +48,53 @@ export default defineType({
       type: 'url',
       description: 'Your LinkedIn profile URL',
     },
+    {
+      name: 'titleFont',
+      title: 'Title Font',
+      type: 'string',
+      description: 'Font for the main portfolio title in navigation',
+      options: {
+        list: [
+          { title: 'Libre Bodoni', value: 'Libre Bodoni' },
+          { title: 'Raleway', value: 'Raleway' },
+          { title: 'Montserrat', value: 'Montserrat' },
+          { title: 'Georgia', value: 'Georgia' },
+          { title: 'Times New Roman', value: 'Times New Roman' },
+        ],
+      },
+      initialValue: 'Libre Bodoni',
+    },
+    {
+      name: 'primaryFont',
+      title: 'Primary Font',
+      type: 'string',
+      description: 'Main font used throughout the site',
+      options: {
+        list: [
+          { title: 'Raleway', value: 'Raleway' },
+          { title: 'Montserrat', value: 'Montserrat' },
+          { title: 'Inter', value: 'Inter' },
+          { title: 'Open Sans', value: 'Open Sans' },
+          { title: 'Roboto', value: 'Roboto' },
+        ],
+      },
+      initialValue: 'Raleway',
+    },
+    {
+      name: 'secondaryFont',
+      title: 'Secondary Font',
+      type: 'string',
+      description: 'Secondary font for accents and headings',
+      options: {
+        list: [
+          { title: 'Montserrat', value: 'Montserrat' },
+          { title: 'Raleway', value: 'Raleway' },
+          { title: 'Inter', value: 'Inter' },
+          { title: 'Open Sans', value: 'Open Sans' },
+          { title: 'Roboto', value: 'Roboto' },
+        ],
+      },
+      initialValue: 'Montserrat',
+    },
   ],
 });

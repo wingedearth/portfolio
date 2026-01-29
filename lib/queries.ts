@@ -9,7 +9,10 @@ export const portfolioQuery = groq`
     owner,
     email,
     featuredProjectsTitle,
-    linkedinUrl
+    linkedinUrl,
+    titleFont,
+    primaryFont,
+    secondaryFont
   }
 `;
 

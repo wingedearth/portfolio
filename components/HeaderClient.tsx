@@ -8,9 +8,24 @@ import { MobileDrawer } from './MobileDrawer';
 interface HeaderClientProps {
   title: string;
   subtitle: string;
+  titleFont?: string;
 }
 
-export const HeaderClient = ({ title, subtitle }: HeaderClientProps) => {
+const getFontFamily = (fontName?: string) => {
+  const fontMap: Record<string, string> = {
+    'Libre Bodoni': 'var(--font-libre-bodoni)',
+    'Raleway': 'var(--font-raleway)',
+    'Montserrat': 'var(--font-montserrat)',
+    'Inter': 'var(--font-inter)',
+    'Open Sans': 'var(--font-open-sans)',
+    'Roboto': 'var(--font-roboto)',
+    'Georgia': 'Georgia, serif',
+    'Times New Roman': '"Times New Roman", serif',
+  };
+  return fontMap[fontName || 'Libre Bodoni'] || 'var(--font-libre-bodoni)';
+};
+
+export const HeaderClient = ({ title, subtitle, titleFont }: HeaderClientProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const pathname = usePathname();
@@ -103,7 +118,12 @@ export const HeaderClient = ({ title, subtitle }: HeaderClientProps) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-start justify-between">
           <Link href="/" className="hover:opacity-80 transition-opacity">
-            <h1 className="text-3xl font-bold text-gray-900 leading-tight">{title}</h1>
+            <h1 
+              className="text-4xl font-bold text-gray-900 leading-tight"
+              style={{ fontFamily: getFontFamily(titleFont) }}
+            >
+              {title}
+            </h1>
             <p className="text-[var(--accent)] font-semibold leading-tight">{subtitle}</p>
           </Link>
 

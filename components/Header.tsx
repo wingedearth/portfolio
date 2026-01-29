@@ -9,6 +9,7 @@ export const Header = async () => {
     <HeaderClient 
       title={portfolio?.title || 'My Portfolio'}
       subtitle={portfolio?.subtitle || 'Showcasing creative projects'}
+      titleFont={portfolio?.titleFont}
     />
   );
 };
