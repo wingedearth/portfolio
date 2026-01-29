@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.22](https://github.com/wingedearth/portfolio/compare/v0.1.21...v0.1.22) (2026-01-29)
+
+
+### Code Refactoring
+
+* consolidate contact content and improve navigation UX ([3297c5d](https://github.com/wingedearth/portfolio/commit/3297c5ddd70815f388358ddb82596e1fa408e556))
+
 ### [0.1.21](https://github.com/wingedearth/portfolio/compare/v0.1.20...v0.1.21) (2026-01-28)
 
 
