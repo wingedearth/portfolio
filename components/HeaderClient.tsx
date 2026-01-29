@@ -119,8 +119,8 @@ export const HeaderClient = ({ title, subtitle, titleFont }: HeaderClientProps) 
         <div className="flex items-start justify-between">
           <Link href="/" onClick={handleHomeClick} className="hover:opacity-80 transition-opacity">
             <h1 
-              className="text-4xl font-bold text-gray-900 leading-tight"
-              style={{ fontFamily: getFontFamily(titleFont) }}
+              className="font-semibold italic text-gray-900 leading-none pl-1"
+              style={{ fontFamily: getFontFamily(titleFont), fontSize: '40px' }}
             >
               {title}
             </h1>
