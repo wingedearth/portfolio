@@ -9,6 +9,8 @@ interface HeaderClientProps {
   title: string;
   subtitle: string;
   titleFont?: string;
+  titleFontSize?: number;
+  subtitleFontSize?: number;
 }
 
 const getFontFamily = (fontName?: string) => {
@@ -25,7 +27,7 @@ const getFontFamily = (fontName?: string) => {
   return fontMap[fontName || 'Libre Bodoni'] || 'var(--font-libre-bodoni)';
 };
 
-export const HeaderClient = ({ title, subtitle, titleFont }: HeaderClientProps) => {
+export const HeaderClient = ({ title, subtitle, titleFont, titleFontSize = 40, subtitleFontSize = 16 }: HeaderClientProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const pathname = usePathname();
@@ -120,11 +122,16 @@ export const HeaderClient = ({ title, subtitle, titleFont }: HeaderClientProps) 
           <Link href="/" onClick={handleHomeClick} className="hover:opacity-80 transition-opacity">
             <h1 
               className="font-semibold italic text-gray-900 leading-none pl-1"
-              style={{ fontFamily: getFontFamily(titleFont), fontSize: '40px' }}
+              style={{ fontFamily: getFontFamily(titleFont), fontSize: `${titleFontSize}px` }}
             >
               {title}
             </h1>
-            <p className="text-[var(--accent)] font-semibold leading-tight">{subtitle}</p>
+            <p 
+              className="text-[var(--accent)] font-semibold leading-tight"
+              style={{ fontSize: `${subtitleFontSize}px` }}
+            >
+              {subtitle}
+            </p>
           </Link>
 
           {/* Desktop Navigation */}

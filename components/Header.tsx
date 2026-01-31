@@ -10,6 +10,8 @@ export const Header = async () => {
       title={portfolio?.title || 'My Portfolio'}
       subtitle={portfolio?.subtitle || 'Showcasing creative projects'}
       titleFont={portfolio?.titleFont}
+      titleFontSize={portfolio?.titleFontSize}
+      subtitleFontSize={portfolio?.subtitleFontSize}
     />
   );
 };

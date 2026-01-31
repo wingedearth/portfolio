@@ -65,6 +65,22 @@ export default defineType({
       initialValue: 'Libre Bodoni',
     },
     {
+      name: 'titleFontSize',
+      title: 'Title Font Size (px)',
+      type: 'number',
+      description: 'Font size for the portfolio title in pixels',
+      initialValue: 40,
+      validation: (Rule) => Rule.min(20).max(80),
+    },
+    {
+      name: 'subtitleFontSize',
+      title: 'Subtitle Font Size (px)',
+      type: 'number',
+      description: 'Font size for the subtitle in pixels',
+      initialValue: 16,
+      validation: (Rule) => Rule.min(12).max(32),
+    },
+    {
       name: 'primaryFont',
       title: 'Primary Font',
       type: 'string',
