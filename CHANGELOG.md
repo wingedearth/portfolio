@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.24](https://github.com/wingedearth/portfolio/compare/v0.1.23...v0.1.24) (2026-01-31)
+
+
+### Features
+
+* add configurable font sizes for title and subtitle ([e851e4b](https://github.com/wingedearth/portfolio/commit/e851e4b72e159113a0b9ffd7104d0e420a2a7a64))
+
+
+### Documentation
+
+* update README with new features ([de6d1ba](https://github.com/wingedearth/portfolio/commit/de6d1ba39a38a37671b3e879ddc3da5566b21661))
+
 ### [0.1.23](https://github.com/wingedearth/portfolio/compare/v0.1.22...v0.1.23) (2026-01-29)
 
 ### [0.1.22](https://github.com/wingedearth/portfolio/compare/v0.1.21...v0.1.22) (2026-01-29)
