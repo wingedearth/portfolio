@@ -15,6 +15,9 @@ A modern, responsive portfolio website built with Next.js, React, and TypeScript
 - 🎯 **TypeScript**: Fully typed for better development experience
 - 🗄️ **Sanity CMS**: Headless CMS for managing multiple portfolios
 - 🔄 **Multi-site Support**: Platform for creating multiple portfolio sites
+- 🔒 **Password Protection**: Optional site-wide password authentication
+- 🎨 **Customizable Fonts**: Configure title, primary, and secondary fonts via Sanity
+- 📏 **Font Size Control**: Adjust title and subtitle sizes in Sanity
 
 ## Getting Started
 
@@ -89,6 +92,9 @@ All content is managed through Sanity CMS. Access the studio at:
 **Portfolio**: Site-wide settings
 - Title, subtitle, contact info
 - Optional custom title for featured projects section
+- Font configuration: title font, primary font, secondary font
+- Font sizes: title and subtitle (in pixels)
+- LinkedIn URL for contact section
 
 **Project**: Individual creative works
 - Title, slug, descriptions (short & long)
@@ -160,7 +166,11 @@ images: {
 ### Styling
 All styles use Tailwind CSS with custom accent colors:
 - **Accent Color**: Defined in `app/globals.css` as CSS variables
-- **Fonts**: Raleway (primary) and Montserrat (secondary) via next/font/google
+- **Fonts**: Configurable via Sanity CMS
+  - Title font: Libre Bodoni (default), Raleway, Montserrat, Georgia, or Times New Roman
+  - Primary font: Raleway (default), Montserrat, Inter, Open Sans, or Roboto
+  - Secondary font: Montserrat (default), Raleway, Inter, Open Sans, or Roboto
+  - Font sizes: Customizable in Sanity (title default: 40px, subtitle default: 16px)
 - **Breakpoints**: Standard Tailwind breakpoints (sm: 640px, md: 768px, lg: 1024px, xl: 1280px, 2xl: 1536px)
 - Component files - Individual component styles
 
@@ -186,11 +196,13 @@ With Incremental Static Regeneration (ISR) enabled, your deployed site automatic
 ## Deployment
 
 ### Heroku
+This project is deployed at https://www.jenntran.com (via Heroku).
+
 See [HEROKU_DEPLOYMENT.md](./HEROKU_DEPLOYMENT.md) for detailed Heroku deployment instructions, including:
-- Environment variable configuration
+- Environment variable configuration (including SITE_PASSWORD for authentication)
 - Automatic and manual deployment options
 - Troubleshooting tips
-- Custom domain setup
+- Custom domain setup with Cloudflare DNS
 
 ### Vercel (Alternative)
 You can also deploy to the [Vercel Platform](https://vercel.com/new).
