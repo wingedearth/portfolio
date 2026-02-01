@@ -15,7 +15,7 @@ export default function ProjectMediaItem({ media, isFirst = false }: ProjectMedi
 
   // Helper to check if URL is a Vimeo link
   const isVimeoUrl = (url: string) => {
-    return url.includes('vimeo.com');
+    return url?.includes('vimeo.com') || false;
   };
 
   // Extract Vimeo video ID from URL
