@@ -63,6 +63,13 @@ export const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
               Home
             </Link>
             <Link
+              href="/work"
+              className="text-lg text-gray-700 hover:text-[var(--accent)] transition-colors"
+              onClick={onClose}
+            >
+              Work
+            </Link>
+            <Link
               href="/about"
               className="text-lg text-gray-700 hover:text-[var(--accent)] transition-colors"
               onClick={onClose}
