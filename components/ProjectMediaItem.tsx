@@ -36,7 +36,12 @@ export default function ProjectMediaItem({ media, isFirst = false }: ProjectMedi
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             if (videoRef.current) {
-              videoRef.current.play();
+              const playPromise = videoRef.current.play();
+              if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                  // Ignore errors when play is interrupted
+                });
+              }
             } else if (iframeRef.current && isVimeoUrl(media.url)) {
               // Send play command to Vimeo iframe
               iframeRef.current.contentWindow?.postMessage(

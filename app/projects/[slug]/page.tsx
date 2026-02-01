@@ -3,6 +3,7 @@ import { client } from '@/lib/sanity';
 import { projectBySlugQuery, projectsQuery } from '@/lib/queries';
 import ProjectMediaItem from '@/components/ProjectMediaItem';
 import { Header } from '@/components/Header';
+import { Footer } from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import { MediaItem } from '@/types/portfolio';
 
@@ -87,6 +88,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           ))}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
