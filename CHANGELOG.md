@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.25](https://github.com/wingedearth/portfolio/compare/v0.1.24...v0.1.25) (2026-02-01)
+
+
+### Features
+
+* add Work navigation item for collections section ([37a51be](https://github.com/wingedearth/portfolio/commit/37a51be0412f6519988025c7fd7fd3af7c139d78))
+
+
+### Bug Fixes
+
+* add null check to isVimeoUrl function ([6be9516](https://github.com/wingedearth/portfolio/commit/6be95165b1652ea38505390e921ff8d9df2a47f8))
+
 ### [0.1.24](https://github.com/wingedearth/portfolio/compare/v0.1.23...v0.1.24) (2026-01-31)
 
 
