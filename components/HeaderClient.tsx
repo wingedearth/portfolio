@@ -48,7 +48,9 @@ export const HeaderClient = ({ title, subtitle, titleFont, titleFontSize = 40, s
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const id = entry.target.id;
-          if (id === 'about') {
+          if (id === 'work') {
+            setActiveSection('work');
+          } else if (id === 'about') {
             setActiveSection('about');
           } else if (id === 'contact') {
             setActiveSection('contact');
@@ -60,9 +62,11 @@ export const HeaderClient = ({ title, subtitle, titleFont, titleFontSize = 40, s
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
     // Observe sections
+    const workSection = document.getElementById('work');
     const aboutSection = document.getElementById('about');
     const contactSection = document.getElementById('contact');
 
+    if (workSection) observer.observe(workSection);
     if (aboutSection) observer.observe(aboutSection);
     if (contactSection) observer.observe(contactSection);
 
@@ -99,6 +103,16 @@ export const HeaderClient = ({ title, subtitle, titleFont, titleFontSize = 40, s
     }
   };
 
+  const handleWorkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/') {
+      e.preventDefault();
+      const workSection = document.getElementById('work');
+      if (workSection) {
+        workSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === '/') {
       e.preventDefault();
@@ -111,6 +125,7 @@ export const HeaderClient = ({ title, subtitle, titleFont, titleFontSize = 40, s
 
   const navItems = [
     { label: 'Home', href: '/', section: 'home', onClick: handleHomeClick },
+    { label: 'Work', href: '/#work', section: 'work', onClick: handleWorkClick },
     { label: 'About', href: '/#about', section: 'about', onClick: handleAboutClick },
     { label: 'Contact', href: '/#contact', section: 'contact', onClick: handleContactClick },
   ];
