@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.26](https://github.com/wingedearth/portfolio/compare/v0.1.25...v0.1.26) (2026-02-01)
+
+
+### Features
+
+* add Back to Top button and fix video errors ([70ae425](https://github.com/wingedearth/portfolio/commit/70ae4251f5199a2e86c1b8c707772f7306ba65a9))
+* add Work page and mobile navigation link ([6957eed](https://github.com/wingedearth/portfolio/commit/6957eed80a89bc26c417fcc291d60e3605bb7560))
+
 ### [0.1.25](https://github.com/wingedearth/portfolio/compare/v0.1.24...v0.1.25) (2026-02-01)
 
 
