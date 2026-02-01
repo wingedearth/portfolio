@@ -55,7 +55,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <div className="min-h-screen bg-gray-50">
       <Header />
 
-      <main className="max-w-6xl mx-auto pt-4 pb-12">
+      <main className="max-w-6xl mx-auto pt-4 pb-4">
         {/* Breadcrumbs */}
         <div className="px-4 sm:px-6 xl:px-8">
           <Breadcrumb items={breadcrumbItems} />

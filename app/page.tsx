@@ -46,7 +46,7 @@ const Home = async () => {
         )}
 
         {/* Contact Section - Hidden on mobile */}
-        <div id="contact" className="hidden md:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div id="contact" className="hidden md:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
           <ContactSection portfolio={portfolio} />
         </div>
       </main>
