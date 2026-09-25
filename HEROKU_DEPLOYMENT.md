@@ -141,3 +141,28 @@ To add a custom domain:
 
 - [Heroku Node.js Documentation](https://devcenter.heroku.com/articles/deploying-nodejs)
 - [Next.js Deployment Documentation](https://nextjs.org/docs/deployment)
+
+## On-demand revalidation (Sanity)
+
+After publishing content in Sanity, production should refresh immediately via webhook instead of waiting on ISR.
+
+1. Generate a secret and set it on Heroku:
+
+```bash
+heroku config:set REVALIDATE_SECRET=your_long_random_secret --app bubblelab
+```
+
+2. In [Sanity manage](https://www.sanity.io/manage) → your project → API → Webhooks, create a webhook:
+   - URL: `https://www.jenntran.com/api/revalidate?secret=YOUR_REVALIDATE_SECRET`
+   - Dataset: `production`
+   - Trigger on: Create, Update, Delete
+   - Filter (optional): `_type in ["project", "collection", "portfolio", "about"]`
+   - HTTP method: POST
+
+3. Publish a change in Studio, then confirm the live site updates within a few seconds.
+
+Manual purge without waiting for Sanity:
+
+```bash
+curl -X POST "https://www.jenntran.com/api/revalidate?secret=YOUR_REVALIDATE_SECRET"
+```
