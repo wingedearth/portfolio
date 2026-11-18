@@ -182,8 +182,8 @@
   --md-duration-standard: var(--md-duration-medium-2);
   --md-duration-emphasized: var(--md-duration-long-2);
 
-  --md-drift: 24px;
-  --md-reveal-distance: 1.25rem;
+  --md-drift: 36px;
+  --md-reveal-distance: 1.75rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -697,7 +697,7 @@ body {
       animation-fill-mode: both;
       animation-timing-function: var(--md-easing-emphasized-decelerate);
       animation-timeline: view();
-      animation-range: entry 8% cover 28%;
+      animation-range: entry 0% cover 42%;
     }
 
     .media-drift {
