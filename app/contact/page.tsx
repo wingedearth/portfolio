@@ -8,9 +8,9 @@ const ContactPage = async () => {
   const portfolio = await client.fetch(portfolioQuery);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative min-h-screen bg-surface text-on-surface">
       <Header />
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <main id="content" className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <ContactSection portfolio={portfolio} />
       </main>
       <Footer />

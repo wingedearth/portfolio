@@ -12,34 +12,33 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, autoplay = false }: ProjectCardProps) {
   const firstMedia = project.media[0];
   const isVideo = firstMedia?.type === 'video';
-  const thumbnailUrl = project.thumbnail || 
+  const thumbnailUrl = project.thumbnail ||
     (isVideo ? firstMedia?.thumbnail : firstMedia?.url);
-  
-  // Helper to check if URL is a Vimeo link
+  const driftCover = !(autoplay && isVideo);
+  const timelineName = `--cover-${(project.slug || project._id || 'project').replace(/[^a-z0-9-]/gi, '')}${autoplay ? '-feature' : ''}`;
+
   const isVimeoUrl = (url: string) => {
     return url?.includes('vimeo.com');
   };
 
-  // Extract Vimeo video ID from URL
   const getVimeoId = (url: string) => {
     const match = url?.match(/vimeo\.com\/(\d+)/);
     return match ? match[1] : null;
   };
 
-  const handleVideoClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleVideoClick = (event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
   };
 
   return (
-    <div className="group rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all">
+    <div className="md-media-card group" style={{ viewTimelineName: timelineName }}>
       <Link
         href={`/projects/${project.slug}`}
         className="block"
       >
-        <div className="relative aspect-video bg-gray-100">
+        <div className="relative aspect-video overflow-hidden bg-surface-container">
         {autoplay && isVideo ? (
-          // Video background with autoplay
           <div onClick={handleVideoClick} className="relative w-full h-full">
             {isVimeoUrl(firstMedia.url) ? (
               <iframe
@@ -47,6 +46,7 @@ export default function ProjectCard({ project, autoplay = false }: ProjectCardPr
                 className="absolute inset-0 w-full h-full"
                 frameBorder="0"
                 allow="autoplay; fullscreen"
+                title={project.title}
               />
             ) : (
               <video
@@ -61,27 +61,26 @@ export default function ProjectCard({ project, autoplay = false }: ProjectCardPr
             )}
           </div>
         ) : (
-          // Static image
           thumbnailUrl && (
-            <Image
-              src={thumbnailUrl}
-              alt={project.title}
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
-            />
+            <div
+              className={driftCover ? 'media-drift relative h-full w-full' : 'absolute inset-0'}
+              style={driftCover ? { animationTimeline: timelineName } : undefined}
+            >
+              <Image
+                src={thumbnailUrl}
+                alt={project.title}
+                fill
+                className="object-cover"
+              />
+            </div>
           )
         )}
         {!autoplay && (
           <>
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-            
-            {/* Black overlay that fades on hover */}
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300" />
-            
-            {/* Text overlay */}
+            <div className="media-scrim absolute inset-0" />
+            <div className="absolute inset-0 bg-scrim/40 transition-colors duration-medium-2 ease-emphasized group-hover:bg-scrim/0 group-focus-within:bg-scrim/0" />
             <div className="absolute inset-0 flex flex-col justify-end p-6 pointer-events-none">
-              <h3 className="text-2xl font-bold text-white">
+              <h3 className="font-secondary text-headline-small text-on-media">
                 {project.title}
               </h3>
             </div>
@@ -90,8 +89,8 @@ export default function ProjectCard({ project, autoplay = false }: ProjectCardPr
         </div>
       </Link>
       {autoplay && (
-        <div className="p-4 bg-white">
-          <h3 className="text-xl font-bold text-gray-900">
+        <div className="px-5 py-4 bg-surface-card">
+          <h3 className="font-secondary text-title-large text-on-surface">
             {project.title}
           </h3>
         </div>

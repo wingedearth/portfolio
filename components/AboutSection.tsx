@@ -1,11 +1,12 @@
-import { PortableText } from '@portabletext/react';
+import { PortableText, type PortableTextBlock } from '@portabletext/react';
 import Image from 'next/image';
+import { richTextComponents } from './richText';
 
 interface AboutSectionProps {
   about: {
     heading?: string;
     profileImage?: string;
-    bio?: any;
+    bio?: PortableTextBlock[];
     skills?: string[];
     socialLinks?: { platform: string; url: string }[];
   };
@@ -14,12 +15,11 @@ interface AboutSectionProps {
 export const AboutSection = ({ about }: AboutSectionProps) => {
   return (
     <div className="space-y-8">
-      {/* Profile Section */}
-      <div className="bg-white rounded-lg shadow-md p-8">
+      <div className="md-card p-8" data-reveal>
         <div className="flex flex-col md:flex-row gap-8 items-start">
           {about.profileImage && (
             <div className="flex-shrink-0">
-              <div className="relative w-48 h-48 rounded-full overflow-hidden">
+              <div className="relative w-48 h-48 rounded-full overflow-hidden shadow-elevation-1">
                 <Image
                   src={about.profileImage}
                   alt={about.heading || 'Profile'}
@@ -31,44 +31,29 @@ export const AboutSection = ({ about }: AboutSectionProps) => {
           )}
           <div className="flex-1">
             {about.heading && (
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">{about.heading}</h2>
+              <h2 className="font-secondary text-headline-large text-on-surface mb-6">{about.heading}</h2>
             )}
             {about.bio && (
-              <div className="text-gray-700 space-y-4">
-                <PortableText 
-                  value={about.bio}
-                  components={{
-                    block: {
-                      normal: ({children}) => <p className="text-lg leading-relaxed">{children}</p>,
-                      h2: ({children}) => <h2 className="text-2xl font-bold mt-8 mb-4">{children}</h2>,
-                      h3: ({children}) => <h3 className="text-xl font-semibold mt-6 mb-3">{children}</h3>,
-                      blockquote: ({children}) => <blockquote className="border-l-4 border-gray-300 pl-4 italic">{children}</blockquote>,
-                    },
-                  }}
-                />
+              <div className="space-y-4">
+                <PortableText value={about.bio} components={richTextComponents} />
               </div>
             )}
           </div>
         </div>
       </div>
 
-      {/* Skills Section */}
       {about.skills && about.skills.length > 0 && (
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">Skills</h3>
-          <div className="flex flex-wrap gap-3">
+        <div className="md-card p-8" data-reveal>
+          <h3 className="font-secondary text-headline-small text-on-surface mb-4">Skills</h3>
+          <div className="flex flex-wrap gap-2">
             {about.skills.map((skill: string, index: number) => (
-              <span
-                key={index}
-                className="px-4 py-2 bg-[var(--accent)]/10 text-[var(--accent)] rounded-full text-sm font-medium"
-              >
+              <span key={index} className="md-chip">
                 {skill}
               </span>
             ))}
           </div>
         </div>
       )}
-
     </div>
   );
 };

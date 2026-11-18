@@ -5,9 +5,8 @@ import ProjectMediaItem from '@/components/ProjectMediaItem';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
-import { MediaItem } from '@/types/portfolio';
+import { MediaItem, Project } from '@/types/portfolio';
 
-// Revalidate this page every 60 seconds
 export const revalidate = 60;
 
 interface ProjectPageProps {
@@ -17,15 +16,15 @@ interface ProjectPageProps {
 }
 
 export async function generateStaticParams() {
-  const projects = await client.fetch(projectsQuery);
-  return projects.map((project: any) => ({
+  const projects = await client.fetch<Project[]>(projectsQuery);
+  return projects.map((project) => ({
     slug: project.slug,
   }));
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const project = await client.fetch(projectBySlugQuery, { slug });
+  const project = await client.fetch<Project | null>(projectBySlugQuery, { slug });
 
   if (!project) {
     notFound();
@@ -34,7 +33,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const firstMedia = project.media[0];
   const remainingMedia = project.media.slice(1);
 
-  // Build breadcrumb items
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
   ];
@@ -52,36 +50,31 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative min-h-screen bg-surface text-on-surface">
       <Header />
 
-      <main className="max-w-6xl mx-auto pt-4 pb-4">
-        {/* Breadcrumbs */}
+      <main id="content" className="relative z-10 max-w-6xl mx-auto pt-6 pb-4">
         <div className="px-4 sm:px-6 xl:px-8">
           <Breadcrumb items={breadcrumbItems} />
         </div>
 
-        {/* Project Title */}
-        <div className="mb-4 px-4 sm:px-6 xl:px-8">
-          <h1 className="text-3xl font-bold text-gray-900">{project.title}</h1>
+        <div className="mb-4 px-4 sm:px-6 xl:px-8" data-reveal>
+          <h1 className="font-secondary text-headline-large text-on-surface">{project.title}</h1>
         </div>
 
-        {/* First Media Item - Full Width */}
         <div className="xl:px-8">
           {firstMedia && (
             <ProjectMediaItem media={firstMedia} isFirst={true} />
           )}
         </div>
 
-        {/* About This Project */}
         {project.longDescription && (
-          <div className="bg-white rounded-lg shadow-md p-8 mb-12 mx-4 sm:mx-6 xl:mx-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">About This Project</h2>
-            <p className="text-gray-700 leading-relaxed text-lg">{project.longDescription}</p>
+          <div className="md-card p-8 mb-12 mx-4 sm:mx-6 xl:mx-8" data-reveal>
+            <h2 className="font-secondary text-headline-small text-on-surface mb-4">About This Project</h2>
+            <p className="text-body-large text-on-surface">{project.longDescription}</p>
           </div>
         )}
 
-        {/* Remaining Media Items - Full Width */}
         <div className="xl:px-8">
           {remainingMedia.map((media: MediaItem, index: number) => (
             <ProjectMediaItem key={index} media={media} isFirst={false} />

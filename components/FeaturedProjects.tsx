@@ -12,10 +12,10 @@ export const FeaturedProjects = ({ projects, title }: FeaturedProjectsProps) => 
 
   return (
     <section className="mb-16">
-      <h2 className="text-3xl font-bold text-gray-900 mb-6">{featuredTitle}</h2>
+      <h2 data-reveal className="font-secondary text-headline-large text-on-surface mb-6">{featuredTitle}</h2>
       <div className="grid grid-cols-1 gap-6">
-              {projects.map((project) => (
-                <ProjectCard key={project._id} project={project} />
+        {projects.map((project) => (
+          <ProjectCard key={project._id} project={project} />
         ))}
       </div>
     </section>

@@ -10,39 +10,36 @@ interface ContactSectionProps {
 
 export const ContactSection = ({ portfolio }: ContactSectionProps) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-8">
-      <h2 className="text-4xl font-bold text-gray-900 mb-6">Get In Touch</h2>
-      
+    <div className="md-card p-8 md:p-10" data-reveal>
+      <h2 className="font-secondary text-headline-large text-on-surface mb-6">Get In Touch</h2>
+
       <div className="space-y-6">
-        <p className="text-lg text-gray-700 leading-relaxed">
-          I'd love to hear from you! Whether you have a project in mind, want to collaborate, 
+        <p className="text-body-large text-on-surface">
+          I&apos;d love to hear from you! Whether you have a project in mind, want to collaborate,
           or just want to say hello, feel free to reach out.
         </p>
 
         {portfolio?.email && (
           <div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Email</h3>
-            <a 
-              href={`mailto:${portfolio.email}`}
-              className="text-lg text-[var(--accent)] hover:text-[var(--accent-hover)] transition-colors"
-            >
+            <h3 className="font-secondary text-title-large text-on-surface mb-2">Email</h3>
+            <a href={`mailto:${portfolio.email}`} className="md-link text-body-large">
               {portfolio.email}
             </a>
           </div>
         )}
 
         {portfolio?.linkedinUrl && (
-          <div className="pt-6 border-t border-gray-200">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Connect With Me</h3>
-            <p className="text-gray-600 mb-4">
-              You can also find me on social media. Check out my work and let's connect!
+          <div className="pt-6 border-t border-outline-variant">
+            <h3 className="font-secondary text-title-large text-on-surface mb-4">Connect With Me</h3>
+            <p className="text-body-large text-on-surface-variant mb-4">
+              You can also find me on social media. Check out my work and let&apos;s connect!
             </p>
             <div className="flex gap-4">
               <a
                 href={portfolio.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-[var(--accent)] text-white rounded-lg hover:bg-[var(--accent-hover)] transition-colors font-medium"
+                className="md-filled-button md-state"
               >
                 LinkedIn
               </a>

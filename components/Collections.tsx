@@ -9,42 +9,40 @@ interface CollectionsProps {
 export const Collections = ({ collections }: CollectionsProps) => {
   return (
     <section>
-      <h2 className="text-3xl font-bold text-gray-900 mb-6">Featured Work</h2>
-      
-      {/* Mobile: Single column */}
+      <h2 data-reveal className="font-secondary text-headline-large text-on-surface mb-8">Featured Work</h2>
+
       <div className="md:hidden space-y-6">
         {collections.map((collection) => (
-          <CollectionCard key={collection._id} collection={collection} />
+          <div key={collection._id} data-reveal>
+            <CollectionCard collection={collection} timelineKey={`${collection.id}-stack`} />
+          </div>
         ))}
       </div>
 
-      {/* Desktop: Alternating zigzag layout */}
-      <div className="hidden md:block space-y-6">
+      <div className="hidden md:block space-y-8">
         {collections.map((collection, index) => (
-          <div key={collection._id} className="grid grid-cols-2 gap-6">
-            {/* Odd rows (0, 2, 4...): Image left, Title right */}
+          <div key={collection._id} className="grid grid-cols-2 gap-8 items-center">
             {index % 2 === 0 ? (
               <>
-                <CollectionCard collection={collection} showTitle={false} />
-                <div className="flex items-center">
-                  <Link href={`/collections/${collection.id}`}>
-                    <h3 className="text-4xl font-bold text-gray-900 hover:text-[var(--accent)] transition-colors cursor-pointer">
+                <CollectionCard collection={collection} showTitle={false} timelineKey={`${collection.id}-zigzag`} />
+                <div className="flex items-center" data-reveal>
+                  <Link href={`/collections/${collection.id}`} className="rounded-medium">
+                    <h3 className="font-secondary text-display-small text-on-surface hover:text-primary transition-colors duration-short-4 ease-standard">
                       {collection.name}
                     </h3>
                   </Link>
                 </div>
               </>
             ) : (
-              /* Even rows (1, 3, 5...): Title left, Image right */
               <>
-                <div className="flex items-center justify-end">
-                  <Link href={`/collections/${collection.id}`}>
-                    <h3 className="text-4xl font-bold text-gray-900 text-right hover:text-[var(--accent)] transition-colors cursor-pointer">
+                <div className="flex items-center justify-end" data-reveal>
+                  <Link href={`/collections/${collection.id}`} className="rounded-medium">
+                    <h3 className="font-secondary text-display-small text-on-surface text-right hover:text-primary transition-colors duration-short-4 ease-standard">
                       {collection.name}
                     </h3>
                   </Link>
                 </div>
-                <CollectionCard collection={collection} showTitle={false} />
+                <CollectionCard collection={collection} showTitle={false} timelineKey={`${collection.id}-zigzag`} />
               </>
             )}
           </div>

@@ -6,46 +6,45 @@ import { Collections } from '@/components/Collections';
 import { Footer } from '@/components/Footer';
 import { AboutSection } from '@/components/AboutSection';
 import { ContactSection } from '@/components/ContactSection';
+import { Project } from '@/types/portfolio';
 
-// Revalidate this page every 60 seconds
 export const revalidate = 60;
 
 const Home = async () => {
   const [allProjects, collections, portfolio, about] = await Promise.all([
-    client.fetch(projectsQuery),
+    client.fetch<Project[]>(projectsQuery),
     client.fetch(collectionsQuery),
     client.fetch(portfolioQuery),
     client.fetch(aboutQuery),
   ]);
 
-  const featuredProjects = allProjects.filter((p: any) => p.featured).slice(0, 1);
+  const featuredProjects = allProjects.filter((project) => project.featured).slice(0, 1);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative min-h-screen bg-surface text-on-surface">
+      <div className="hero-depth-clip" aria-hidden="true">
+        <div className="hero-depth" />
+      </div>
       <Header />
-      <main>
-        {/* Featured Projects - Always full width */}
+      <main id="content" className="relative z-10">
         <div className="mb-12">
           <div className="grid grid-cols-1 gap-6">
-            {featuredProjects.map((project: any) => (
+            {featuredProjects.map((project) => (
               <ProjectCard key={project._id} project={project} autoplay={true} />
             ))}
           </div>
         </div>
-        
-        {/* Collections - Always contained */}
+
         <div id="work" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Collections collections={collections} />
         </div>
 
-        {/* About Section - Hidden on mobile */}
         {about && (
           <div id="about" className="hidden md:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <AboutSection about={about} />
           </div>
         )}
 
-        {/* Contact Section - Hidden on mobile */}
         <div id="contact" className="hidden md:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
           <ContactSection portfolio={portfolio} />
         </div>

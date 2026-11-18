@@ -4,16 +4,15 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Collections } from '@/components/Collections';
 
-// Revalidate this page every 60 seconds
 export const revalidate = 60;
 
 const WorkPage = async () => {
   const collections = await client.fetch(collectionsQuery);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative min-h-screen bg-surface text-on-surface">
       <Header />
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <main id="content" className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Collections collections={collections} />
       </main>
       <Footer />

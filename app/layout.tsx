@@ -4,6 +4,7 @@ import "./globals.css";
 import { client } from '@/lib/sanity';
 import { portfolioQuery } from '@/lib/queries';
 import { FontProvider } from '@/components/FontProvider';
+import { MotionRoot } from '@/components/MotionRoot';
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -63,6 +64,7 @@ export default async function RootLayout({
           primaryFont={portfolio?.primaryFont} 
           secondaryFont={portfolio?.secondaryFont} 
         />
+        <MotionRoot />
         {children}
       </body>
     </html>
