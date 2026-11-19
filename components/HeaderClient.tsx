@@ -119,7 +119,7 @@ export const HeaderClient = ({ title, subtitle, titleFont, titleFontSize = 40, s
       </a>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex items-center justify-between gap-4">
-          <Link href="/" onClick={handleHomeClick} className="rounded-medium hover:opacity-80 transition-opacity duration-short-4 ease-standard">
+          <Link href="/" onClick={handleHomeClick} className="hero-lockup rounded-medium">
             <h1
               className="font-semibold italic text-on-surface leading-none pl-1"
               style={{ fontFamily: getFontFamily(titleFont), fontSize: `${titleFontSize}px` }}

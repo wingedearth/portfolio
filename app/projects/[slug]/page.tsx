@@ -58,7 +58,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <Breadcrumb items={breadcrumbItems} />
         </div>
 
-        <div className="mb-4 px-4 sm:px-6 xl:px-8" data-reveal>
+        <div className="section-parallax mb-4 px-4 sm:px-6 xl:px-8" data-reveal>
           <h1 className="font-secondary text-headline-large text-on-surface">{project.title}</h1>
         </div>
 
@@ -69,7 +69,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
 
         {project.longDescription && (
-          <div className="md-card p-8 mb-12 mx-4 sm:mx-6 xl:mx-8" data-reveal>
+          <div className="section-parallax section-parallax-alt md-card p-8 mb-12 mx-4 sm:mx-6 xl:mx-8" data-reveal>
             <h2 className="font-secondary text-headline-small text-on-surface mb-4">About This Project</h2>
             <p className="text-body-large text-on-surface">{project.longDescription}</p>
           </div>

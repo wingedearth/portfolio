@@ -24,6 +24,7 @@ const Home = async () => {
     <div className="relative min-h-screen bg-surface text-on-surface">
       <div className="hero-depth-clip" aria-hidden="true">
         <div className="hero-depth" />
+        <div className="hero-depth hero-depth-fore" />
       </div>
       <Header />
       <main id="content" className="relative z-10">
@@ -35,17 +36,17 @@ const Home = async () => {
           </div>
         </div>
 
-        <div id="work" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div id="work" className="section-parallax max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Collections collections={collections} />
         </div>
 
         {about && (
-          <div id="about" className="hidden md:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div id="about" className="section-parallax section-parallax-alt hidden md:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <AboutSection about={about} />
           </div>
         )}
 
-        <div id="contact" className="hidden md:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
+        <div id="contact" className="section-parallax hidden md:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-4">
           <ContactSection portfolio={portfolio} />
         </div>
       </main>

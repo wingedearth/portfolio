@@ -85,7 +85,7 @@ export default function ProjectCard({ project, autoplay = false }: ProjectCardPr
         </div>
       </Link>
       {autoplay && (
-        <div className="px-5 py-4 bg-surface-card">
+        <div className="hero-caption px-5 py-4 bg-surface-card">
           <h3 className="font-secondary text-title-large text-on-surface">
             {project.title}
           </h3>

@@ -51,7 +51,7 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
         </div>
 
         {projects.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project: Project) => (
               <div key={project._id} data-reveal>
                 <ProjectCard project={project} />

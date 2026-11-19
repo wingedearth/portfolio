@@ -11,7 +11,7 @@ export const Collections = ({ collections }: CollectionsProps) => {
     <section>
       <h2 data-reveal className="font-secondary text-headline-large text-on-surface mb-8">Featured Work</h2>
 
-      <div className="md:hidden space-y-6">
+      <div className="reveal-stagger md:hidden space-y-6">
         {collections.map((collection) => (
           <div key={collection._id} data-reveal>
             <CollectionCard collection={collection} />

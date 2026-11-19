@@ -182,8 +182,17 @@
   --md-duration-standard: var(--md-duration-medium-2);
   --md-duration-emphasized: var(--md-duration-long-2);
 
-  --md-drift: 36px;
-  --md-reveal-distance: 1.75rem;
+  /* Scroll-motion strength. Tune these. */
+  --md-drift: 24%;
+  --md-drift-scale: 1.42;
+  --md-reveal-distance: 72px;
+  --md-reveal-scale: 0.9;
+  --md-reveal-cover: 72%;
+  --md-hero-shift: 32vh;
+  --md-hero-fore-shift: -18vh;
+  --md-hero-title-shift: -64px;
+  --md-hero-caption-shift: -88px;
+  --md-section-shift: 18vh;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -194,8 +203,13 @@
 
 @media (max-width: 768px) {
   :root {
-    --md-drift: 10px;
-    --md-reveal-distance: 0.75rem;
+    --md-drift: 12%;
+    --md-reveal-distance: 40px;
+    --md-hero-shift: 16vh;
+    --md-hero-fore-shift: -10vh;
+    --md-hero-title-shift: -28px;
+    --md-hero-caption-shift: -40px;
+    --md-section-shift: 7vh;
   }
 }
 
@@ -633,18 +647,28 @@ body {
   right: 0;
   left: 0;
   z-index: 0;
-  height: 88vh;
+  height: 150vh;
   overflow: hidden;
 }
 
 .hero-depth {
   position: absolute;
-  inset: -12vh 0 auto;
-  height: 120%;
+  inset: -24vh 0 auto;
+  height: 160%;
   background:
-    radial-gradient(42rem 28rem at 12% 0%, color-mix(in srgb, var(--md-primary) 22%, transparent), transparent 70%),
-    radial-gradient(36rem 24rem at 92% 18%, color-mix(in srgb, var(--md-tertiary-container) 80%, transparent), transparent 68%),
-    linear-gradient(to bottom, transparent, var(--md-surface) 92%);
+    radial-gradient(52rem 40rem at 12% 8%, color-mix(in srgb, var(--md-primary) 62%, transparent), transparent 68%),
+    radial-gradient(44rem 36rem at 88% 22%, color-mix(in srgb, var(--md-tertiary) 48%, transparent), transparent 70%);
+}
+
+.hero-depth-fore {
+  background:
+    radial-gradient(38rem 32rem at 72% 62%, color-mix(in srgb, var(--md-primary-container) 90%, transparent), transparent 64%),
+    radial-gradient(28rem 24rem at 18% 78%, color-mix(in srgb, var(--md-tertiary-container) 85%, transparent), transparent 66%);
+}
+
+.section-parallax {
+  position: relative;
+  isolation: isolate;
 }
 
 .media-scrim {
@@ -654,20 +678,20 @@ body {
 @keyframes rise-in {
   from {
     opacity: 0;
-    transform: translate3d(0, var(--md-reveal-distance), 0);
+    transform: translate3d(0, var(--md-reveal-distance), 0) scale(var(--md-reveal-scale));
   }
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }
 
 @keyframes media-drift {
   from {
-    transform: translate3d(0, calc(var(--md-drift) * -0.5), 0) scale(1.08);
+    transform: translate3d(0, calc(var(--md-drift) * -0.5), 0) scale(var(--md-drift-scale));
   }
   to {
-    transform: translate3d(0, calc(var(--md-drift) * 0.5), 0) scale(1.08);
+    transform: translate3d(0, calc(var(--md-drift) * 0.5), 0) scale(var(--md-drift-scale));
   }
 }
 
@@ -676,7 +700,55 @@ body {
     transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translate3d(0, 8vh, 0);
+    transform: translate3d(0, var(--md-hero-shift), 0);
+  }
+}
+
+@keyframes hero-drift-fore {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, var(--md-hero-fore-shift), 0);
+  }
+}
+
+@keyframes hero-lockup {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  28% {
+    opacity: 0;
+    transform: translate3d(0, var(--md-hero-title-shift), 0);
+  }
+  62% {
+    opacity: 0;
+    transform: translate3d(0, var(--md-hero-title-shift), 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hero-caption {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, var(--md-hero-caption-shift), 0);
+  }
+}
+
+@keyframes section-drift {
+  from {
+    transform: translate3d(0, var(--md-section-shift), 0);
+  }
+  to {
+    transform: translate3d(0, calc(var(--md-section-shift) * -1), 0);
   }
 }
 
@@ -695,9 +767,21 @@ body {
       animation-name: rise-in;
       animation-duration: auto;
       animation-fill-mode: both;
-      animation-timing-function: var(--md-easing-emphasized-decelerate);
+      animation-timing-function: var(--md-easing-linear);
       animation-timeline: view();
-      animation-range: entry 0% cover 42%;
+      /* Linear, across the whole time the block is on screen.
+         An ease-out curve spends the rise in the first moments at the
+         bottom edge, so it reads as no motion once you are looking at it. */
+      animation-range-start: cover 0%;
+      animation-range-end: cover 100%;
+    }
+
+    .reveal-stagger > [data-reveal]:nth-child(3n + 2) {
+      animation-range-start: cover 10%;
+    }
+
+    .reveal-stagger > [data-reveal]:nth-child(3n + 3) {
+      animation-range-start: cover 18%;
     }
 
     .md-media-card {
@@ -723,7 +807,58 @@ body {
       animation-fill-mode: both;
       animation-timing-function: var(--md-easing-linear);
       animation-timeline: scroll(root);
+      animation-range: 0 110vh;
+    }
+
+    .hero-depth-fore {
+      animation-name: hero-drift-fore;
+    }
+
+    .hero-lockup {
+      animation-name: hero-lockup;
+      animation-duration: auto;
+      animation-fill-mode: both;
+      animation-timing-function: var(--md-easing-linear);
+      animation-timeline: scroll(root);
+      animation-range: 0 140vh;
+    }
+
+    .hero-caption {
+      animation-name: hero-caption;
+      animation-duration: auto;
+      animation-fill-mode: both;
+      animation-timing-function: var(--md-easing-linear);
+      animation-timeline: scroll(root);
       animation-range: 0 70vh;
+    }
+
+    .section-parallax {
+      timeline-scope: --section-band;
+      view-timeline-name: --section-band;
+      view-timeline-axis: block;
+    }
+
+    .section-parallax::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: -18% 0;
+      border-radius: var(--md-shape-extra-large);
+      background:
+        radial-gradient(32rem 18rem at 10% 40%, color-mix(in srgb, var(--md-primary) 28%, transparent), transparent 70%),
+        radial-gradient(28rem 16rem at 90% 60%, color-mix(in srgb, var(--md-tertiary) 24%, transparent), transparent 72%);
+      animation-name: section-drift;
+      animation-duration: auto;
+      animation-fill-mode: both;
+      animation-timing-function: var(--md-easing-linear);
+      animation-timeline: --section-band;
+      animation-range: cover 0% cover 100%;
+      pointer-events: none;
+    }
+
+    .section-parallax-alt::before {
+      animation-name: section-drift;
+      animation-direction: reverse;
     }
 
     .md-app-bar {
@@ -739,7 +874,7 @@ body {
   @supports not (animation-timeline: view()) {
     [data-reveal].is-pending {
       opacity: 0;
-      transform: translate3d(0, var(--md-reveal-distance), 0);
+      transform: translate3d(0, var(--md-reveal-distance), 0) scale(var(--md-reveal-scale));
     }
 
     [data-reveal].is-inview {
@@ -748,6 +883,14 @@ body {
       transition:
         opacity var(--md-duration-emphasized) var(--md-easing-emphasized-decelerate),
         transform var(--md-duration-emphasized) var(--md-easing-emphasized-decelerate);
+    }
+
+    .reveal-stagger > [data-reveal]:nth-child(3n + 2).is-inview {
+      transition-delay: 90ms;
+    }
+
+    .reveal-stagger > [data-reveal]:nth-child(3n + 3).is-inview {
+      transition-delay: 180ms;
     }
   }
 }
@@ -766,8 +909,13 @@ body {
 
   .media-drift,
   .hero-depth,
+  .hero-lockup,
+  .hero-caption,
+  .section-parallax::before,
   [data-reveal],
   .md-app-bar {
     animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
