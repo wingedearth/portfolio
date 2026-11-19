@@ -700,11 +700,20 @@ body {
       animation-range: entry 0% cover 42%;
     }
 
+    .md-media-card {
+      /* Scope the name to this card. A shared name otherwise attaches once
+         for the whole document, so only one cover (or none) would drift. */
+      timeline-scope: --media-frame;
+      view-timeline-name: --media-frame;
+      view-timeline-axis: block;
+    }
+
     .media-drift {
       animation-name: media-drift;
       animation-duration: auto;
       animation-fill-mode: both;
       animation-timing-function: var(--md-easing-linear);
+      animation-timeline: --media-frame;
       animation-range: cover 0% cover 100%;
     }
 

@@ -5,10 +5,9 @@ import Image from 'next/image';
 interface CollectionCardProps {
   collection: ProjectCollection;
   showTitle?: boolean;
-  timelineKey: string;
 }
 
-export default function CollectionCard({ collection, showTitle = true, timelineKey }: CollectionCardProps) {
+export default function CollectionCard({ collection, showTitle = true }: CollectionCardProps) {
   const { id, name = '', thumbnail } = collection;
   const projects = collection.projects || [];
   const firstProject = projects?.[0] || {};
@@ -18,17 +17,14 @@ export default function CollectionCard({ collection, showTitle = true, timelineK
     firstProject.thumbnail ||
     (firstMedia?.type === 'video' ? firstMedia?.thumbnail : firstMedia?.url);
 
-  const timelineName = `--cover-${timelineKey.replace(/[^a-z0-9-]/gi, '')}`;
-
   return (
     <Link
       href={`/collections/${id}`}
       className="md-media-card group block"
-      style={{ viewTimelineName: timelineName }}
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-surface-container">
         {thumbnailUrl && (
-          <div className="media-drift relative h-full w-full" style={{ animationTimeline: timelineName }}>
+          <div className="media-drift relative h-full w-full">
             <Image
               src={thumbnailUrl}
               alt={name}

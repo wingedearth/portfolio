@@ -14,7 +14,7 @@ export const Collections = ({ collections }: CollectionsProps) => {
       <div className="md:hidden space-y-6">
         {collections.map((collection) => (
           <div key={collection._id} data-reveal>
-            <CollectionCard collection={collection} timelineKey={`${collection.id}-stack`} />
+            <CollectionCard collection={collection} />
           </div>
         ))}
       </div>
@@ -24,7 +24,7 @@ export const Collections = ({ collections }: CollectionsProps) => {
           <div key={collection._id} className="grid grid-cols-2 gap-8 items-center">
             {index % 2 === 0 ? (
               <>
-                <CollectionCard collection={collection} showTitle={false} timelineKey={`${collection.id}-zigzag`} />
+                <CollectionCard collection={collection} showTitle={false} />
                 <div className="flex items-center" data-reveal>
                   <Link href={`/collections/${collection.id}`} className="rounded-medium">
                     <h3 className="font-secondary text-display-small text-on-surface hover:text-primary transition-colors duration-short-4 ease-standard">
@@ -42,7 +42,7 @@ export const Collections = ({ collections }: CollectionsProps) => {
                     </h3>
                   </Link>
                 </div>
-                <CollectionCard collection={collection} showTitle={false} timelineKey={`${collection.id}-zigzag`} />
+                <CollectionCard collection={collection} showTitle={false} />
               </>
             )}
           </div>

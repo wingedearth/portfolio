@@ -15,7 +15,6 @@ export default function ProjectCard({ project, autoplay = false }: ProjectCardPr
   const thumbnailUrl = project.thumbnail ||
     (isVideo ? firstMedia?.thumbnail : firstMedia?.url);
   const driftCover = !(autoplay && isVideo);
-  const timelineName = `--cover-${(project.slug || project._id || 'project').replace(/[^a-z0-9-]/gi, '')}${autoplay ? '-feature' : ''}`;
 
   const isVimeoUrl = (url: string) => {
     return url?.includes('vimeo.com');
@@ -32,7 +31,7 @@ export default function ProjectCard({ project, autoplay = false }: ProjectCardPr
   };
 
   return (
-    <div className="md-media-card group" style={{ viewTimelineName: timelineName }}>
+    <div className="md-media-card group">
       <Link
         href={`/projects/${project.slug}`}
         className="block"
@@ -62,10 +61,7 @@ export default function ProjectCard({ project, autoplay = false }: ProjectCardPr
           </div>
         ) : (
           thumbnailUrl && (
-            <div
-              className={driftCover ? 'media-drift relative h-full w-full' : 'absolute inset-0'}
-              style={driftCover ? { animationTimeline: timelineName } : undefined}
-            >
+            <div className={driftCover ? 'media-drift relative h-full w-full' : 'absolute inset-0'}>
               <Image
                 src={thumbnailUrl}
                 alt={project.title}
