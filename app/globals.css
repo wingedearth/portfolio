@@ -5,10 +5,11 @@
  * Neutrals, secondary, tertiary, and error: Material 3 tonal spot, contrast 0, spec 2021.
  * Primary roles: the seed's own HCT tonal palette at the spec tone stops (light primary tone 40).
  * Regenerate with: npm run tokens
- * Dark values are kept for a later manual theme. Nothing sets data-theme,
- * and prefers-color-scheme does not switch the site.
+ * Light is the default. An explicit data-theme="light" or data-theme="dark"
+ * wins. Otherwise a dark color-scheme preference uses the dark roles.
  */
 :root {
+  color-scheme: light;
   --md-primary: #92379b;
   --md-on-primary: #ffffff;
   --md-primary-container: #ffd6fb;
@@ -63,6 +64,7 @@
 }
 
 [data-theme="dark"] {
+  color-scheme: dark;
   --md-primary: #fea9ff;
   --md-on-primary: #580063;
   --md-primary-container: #771a81;
@@ -115,10 +117,66 @@
   --md-primary-hover: #ea86ef;
   --md-surface-card: var(--md-surface-container-high);
 }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --md-primary: #fea9ff;
+    --md-on-primary: #580063;
+    --md-primary-container: #771a81;
+    --md-on-primary-container: #ffd6fb;
+    --md-secondary: #d8bfd4;
+    --md-on-secondary: #3c2b3b;
+    --md-secondary-container: #534152;
+    --md-on-secondary-container: #f5dbf1;
+    --md-tertiary: #f6b8ac;
+    --md-on-tertiary: #4c251e;
+    --md-tertiary-container: #673b33;
+    --md-on-tertiary-container: #ffdad3;
+    --md-error: #ffb4ab;
+    --md-on-error: #690005;
+    --md-error-container: #93000a;
+    --md-on-error-container: #ffdad6;
+    --md-background: #171216;
+    --md-on-background: #ebdfe6;
+    --md-surface: #171216;
+    --md-on-surface: #ebdfe6;
+    --md-surface-variant: #4d444c;
+    --md-on-surface-variant: #d0c3cc;
+    --md-outline: #998d96;
+    --md-outline-variant: #4d444c;
+    --md-shadow: #000000;
+    --md-scrim: #000000;
+    --md-inverse-surface: #ebdfe6;
+    --md-inverse-on-surface: #352e34;
+    --md-inverse-primary: #92379b;
+    --md-surface-dim: #171216;
+    --md-surface-bright: #3e373c;
+    --md-surface-container-lowest: #120d11;
+    --md-surface-container-low: #1f1a1f;
+    --md-surface-container: #241e23;
+    --md-surface-container-high: #2e282d;
+    --md-surface-container-highest: #393338;
+    --md-surface-tint: #fea9ff;
+    --md-primary-fixed: #ffd6fb;
+    --md-primary-fixed-dim: #fea9ff;
+    --md-on-primary-fixed: #36003d;
+    --md-on-primary-fixed-variant: #771a81;
+    --md-secondary-fixed: #f5dbf1;
+    --md-secondary-fixed-dim: #d8bfd4;
+    --md-on-secondary-fixed: #261626;
+    --md-on-secondary-fixed-variant: #534152;
+    --md-tertiary-fixed: #ffdad3;
+    --md-tertiary-fixed-dim: #f6b8ac;
+    --md-on-tertiary-fixed: #33110b;
+    --md-on-tertiary-fixed-variant: #673b33;
+    --md-primary-hover: #ea86ef;
+    --md-surface-card: var(--md-surface-container-high);
+  }
+}
 /* END GENERATED M3 COLORS */
 
 :root {
-  color-scheme: light;
   --md-on-media: #ffffff;
 
   --background: var(--md-surface);

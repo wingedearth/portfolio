@@ -176,15 +176,24 @@ const block = `/* BEGIN GENERATED M3 COLORS
  * Neutrals, secondary, tertiary, and error: Material 3 tonal spot, contrast 0, spec 2021.
  * Primary roles: the seed's own HCT tonal palette at the spec tone stops (light primary tone 40).
  * Regenerate with: npm run tokens
- * Dark values are kept for a later manual theme. Nothing sets data-theme,
- * and prefers-color-scheme does not switch the site.
+ * Light is the default. An explicit data-theme="light" or data-theme="dark"
+ * wins. Otherwise a dark color-scheme preference uses the dark roles.
  */
 :root {
+  color-scheme: light;
 ${schemeBlock(false, '  ')}
 }
 
 [data-theme="dark"] {
+  color-scheme: dark;
 ${schemeBlock(true, '  ')}
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+${schemeBlock(true, '    ')}
+  }
 }
 /* END GENERATED M3 COLORS */`;
 

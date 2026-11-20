@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { MobileDrawer } from './MobileDrawer';
+import { ThemeToggle } from './ThemeToggle';
 import { scrollBehavior } from '@/lib/motion';
 
 interface HeaderClientProps {
@@ -134,6 +135,7 @@ export const HeaderClient = ({ title, subtitle, titleFont, titleFontSize = 40, s
             </p>
           </Link>
 
+          <div className="flex items-center gap-1">
           <nav className="hidden md:flex gap-1" aria-label="Primary">
             {navItems.map((item) => {
               const active = isActive(item.section);
@@ -152,7 +154,7 @@ export const HeaderClient = ({ title, subtitle, titleFont, titleFontSize = 40, s
               );
             })}
           </nav>
-
+          <ThemeToggle />
           <button
             ref={menuButtonRef}
             type="button"
@@ -179,6 +181,7 @@ export const HeaderClient = ({ title, subtitle, titleFont, titleFontSize = 40, s
               )}
             </svg>
           </button>
+          </div>
         </div>
       </div>
 
