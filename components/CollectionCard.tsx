@@ -12,35 +12,32 @@ export default function CollectionCard({ collection, showTitle = true }: Collect
   const projects = collection.projects || [];
   const firstProject = projects?.[0] || {};
   const firstMedia = firstProject.media?.[0];
-  const thumbnailUrl = 
-    thumbnail || 
-    firstProject.thumbnail || 
+  const thumbnailUrl =
+    thumbnail ||
+    firstProject.thumbnail ||
     (firstMedia?.type === 'video' ? firstMedia?.thumbnail : firstMedia?.url);
 
   return (
     <Link
       href={`/collections/${id}`}
-      className="group block rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all"
+      className="md-media-card group block"
     >
-      <div className="relative aspect-[4/3] bg-gray-100">
+      <div className="relative aspect-[4/3] overflow-hidden bg-surface-container">
         {thumbnailUrl && (
-          <Image
-            src={thumbnailUrl}
-            alt={name}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-          />
+          <div className="media-drift relative h-full w-full">
+            <Image
+              src={thumbnailUrl}
+              alt={name}
+              fill
+              className="object-cover"
+            />
+          </div>
         )}
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-        
-        {/* Black overlay that fades on hover */}
-        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/0 transition-colors duration-300" />
-        
-        {/* Text overlay - only show if showTitle is true */}
+        <div className="media-scrim absolute inset-0" />
+        <div className="absolute inset-0 bg-scrim/40 transition-colors duration-medium-2 ease-emphasized group-hover:bg-scrim/0 group-focus-within:bg-scrim/0" />
         {showTitle && (
           <div className="absolute inset-0 flex items-center justify-center p-6">
-            <h3 className="text-3xl font-bold text-white text-center">
+            <h3 className="font-secondary text-headline-large text-on-media text-center">
               {name}
             </h3>
           </div>

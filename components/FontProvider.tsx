@@ -21,14 +21,18 @@ const getFontVariable = (fontName?: string): string => {
 
 export const FontProvider = ({ primaryFont, secondaryFont }: FontProviderProps) => {
   useEffect(() => {
-    const root = document.documentElement;
-    
+    const root = document.body;
+
     if (primaryFont) {
-      root.style.setProperty('--font-sans', getFontVariable(primaryFont));
+      const primary = getFontVariable(primaryFont);
+      root.style.setProperty('--font-sans', primary);
+      root.style.setProperty('--font-sans-active', primary);
     }
-    
+
     if (secondaryFont) {
-      root.style.setProperty('--font-secondary', getFontVariable(secondaryFont));
+      const secondary = getFontVariable(secondaryFont);
+      root.style.setProperty('--font-secondary', secondary);
+      root.style.setProperty('--font-secondary-active', secondary);
     }
   }, [primaryFont, secondaryFont]);
 

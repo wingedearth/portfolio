@@ -4,8 +4,8 @@ import { collectionByIdQuery, collectionsQuery } from '@/lib/queries';
 import ProjectCard from '@/components/ProjectCard';
 import { Header } from '@/components/Header';
 import Breadcrumb from '@/components/Breadcrumb';
+import { Project, ProjectCollection } from '@/types/portfolio';
 
-// Revalidate this page every 60 seconds
 export const revalidate = 60;
 
 interface CollectionPageProps {
@@ -15,20 +15,20 @@ interface CollectionPageProps {
 }
 
 export async function generateStaticParams() {
-  const collections = await client.fetch(collectionsQuery);
-  return collections.map((collection: any) => ({
+  const collections = await client.fetch<ProjectCollection[]>(collectionsQuery);
+  return collections.map((collection) => ({
     id: collection.id,
   }));
 }
 
 export default async function CollectionPage({ params }: CollectionPageProps) {
   const { id } = await params;
-  const collection = await client.fetch(collectionByIdQuery, { id });
+  const collection = await client.fetch<ProjectCollection | null>(collectionByIdQuery, { id });
 
   if (!collection) {
     notFound();
   }
-  const projects = collection?.projects || [];
+  const projects = collection.projects || [];
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -36,32 +36,31 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="relative min-h-screen bg-surface text-on-surface">
       <Header />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-4">
-        {/* Breadcrumbs */}
+      <main id="content" className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
         <Breadcrumb items={breadcrumbItems} />
 
-        {/* Collection Header */}
-        <div className="mb-12">
-          <h1 className="text-3xl font-bold text-gray-900 mb-3">{collection.name}</h1>
-          <p className="text-xl text-gray-600">{collection.description}</p>
-          <p className="text-sm text-gray-500 mt-2">
+        <div className="mb-12" data-reveal>
+          <h1 className="font-secondary text-headline-large text-on-surface mb-3">{collection.name}</h1>
+          <p className="text-body-large text-on-surface-variant max-w-4xl">{collection.description}</p>
+          <p className="text-label-large text-on-surface-variant mt-3">
             {projects.length} {projects.length === 1 ? 'project' : 'projects'}
           </p>
         </div>
 
-        {/* Projects Grid */}
         {projects.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project: any) => (
-              <ProjectCard key={project._id} project={project} />
+          <div className="reveal-stagger grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project: Project) => (
+              <div key={project._id} data-reveal>
+                <ProjectCard project={project} />
+              </div>
             ))}
           </div>
         ) : (
           <div className="text-center py-12">
-            <p className="text-gray-500">No projects in this collection yet.</p>
+            <p className="text-body-large text-on-surface-variant">No projects in this collection yet.</p>
           </div>
         )}
       </main>

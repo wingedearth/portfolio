@@ -11,8 +11,8 @@ function LoginForm() {
   const searchParams = useSearchParams();
   const from = searchParams.get('from') || '/';
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
     setError('');
     setIsLoading(true);
 
@@ -32,7 +32,7 @@ function LoginForm() {
         setError('Incorrect password');
         setPassword('');
       }
-    } catch (err) {
+    } catch {
       setError('An error occurred. Please try again.');
     } finally {
       setIsLoading(false);
@@ -40,23 +40,23 @@ function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-surface text-on-surface flex items-center justify-center px-4">
       <div className="max-w-md w-full">
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+        <div className="md-card p-8">
+          <h1 className="font-secondary text-headline-medium text-on-surface mb-6 text-center">
             Password Protected
           </h1>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-label-large text-on-surface mb-2">
                 Password
               </label>
               <input
                 type="password"
                 id="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--accent)] focus:border-transparent outline-none"
+                onChange={(event) => setPassword(event.target.value)}
+                className="md-field"
                 placeholder="Enter password"
                 required
                 autoFocus
@@ -64,12 +64,12 @@ function LoginForm() {
               />
             </div>
             {error && (
-              <p className="text-red-600 text-sm">{error}</p>
+              <p className="text-body-small text-error" role="alert">{error}</p>
             )}
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white font-semibold py-3 px-4 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="md-filled-button md-state w-full"
             >
               {isLoading ? 'Verifying...' : 'Enter'}
             </button>
@@ -83,13 +83,13 @@ function LoginForm() {
 export default function LoginPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-surface text-on-surface flex items-center justify-center px-4">
         <div className="max-w-md w-full">
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+          <div className="md-card p-8">
+            <h1 className="font-secondary text-headline-medium text-on-surface mb-6 text-center">
               Portfolio Access
             </h1>
-            <div className="text-center text-gray-600">Loading...</div>
+            <div className="text-center text-body-large text-on-surface-variant">Loading...</div>
           </div>
         </div>
       </div>

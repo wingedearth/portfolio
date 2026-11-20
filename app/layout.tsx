@@ -4,6 +4,8 @@ import "./globals.css";
 import { client } from '@/lib/sanity';
 import { portfolioQuery } from '@/lib/queries';
 import { FontProvider } from '@/components/FontProvider';
+import { MotionRoot } from '@/components/MotionRoot';
+import { themeInitScript } from '@/lib/theme';
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -55,7 +57,10 @@ export default async function RootLayout({
   const portfolio = await client.fetch(portfolioQuery);
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body
         className={`${raleway.variable} ${montserrat.variable} ${libreBodoni.variable} ${inter.variable} ${openSans.variable} ${roboto.variable} font-sans antialiased`}
       >
@@ -63,6 +68,7 @@ export default async function RootLayout({
           primaryFont={portfolio?.primaryFont} 
           secondaryFont={portfolio?.secondaryFont} 
         />
+        <MotionRoot />
         {children}
       </body>
     </html>
